@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: parent(~{::#content},~{title},~{script})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" data-th-href="@{'/css/output.css'}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.4.1/flowbite.min.css" rel="stylesheet" />
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>College Selection</title>
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" data-th-href="@{'css/style.css'}">
+    </head>
+    <body>
+        <div id="content" th-data-fragment="content">
+
+            <header class="bg-gray-200 text-black dark:bg-gray-800 dark:text-white py-8">
+                <div class="container mx-auto text-center">
+                    <h1 class="text-4xl font-bold">Find Your Perfect Engineering College</h1>
+                    <p class="text-lg mt-4">Enter your marks and discover top colleges based on your score.</p>
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-6">Start Searching</button>
+                </div>
+            </header>
+            
+            <div id="photo" style="height: 420px ;width: 83%; margin-left: 130px;" class="flex flex-col items-center justify-center">
+
+                <!-- <img  class="" src="/Images/clg.jpg" > -->
+                 <h2 class="text-4xl text-white font-bold">WE FIND OUT THE BEST COLLEGES FOR YOU</h2>
+                <P class="text-gray-200">Make sure that you will get best college for you</P>
+            </div>
+
+            <!-- <main class="container mx-auto py-12">
+                <div class="grid grid-cols-3 gap-4 mt-8">
+                <div class="bg-white rounded shadow p-6 text-center">
+                    <h3 class="text-xl font-bold">Feature 1</h3>
+                    <p>Brief description of feature 1.</p>
+                </div>
+            </div>
+        </main> -->
+        
+        <footer class="bg-gray-300 text-black dark:bg-gray-800 dark:text-white py-8">
+            <div class="container mx-auto text-center">
+                <p class="text-3xl"> ClgSite</p>
+                <a href="#" class="text-blue-400 hover:text-blue-300">Contact Us</a>
+                <a href="#" class="text-blue-400 hover:text-blue-300">Privacy Policy</a>
+            </div>
+        </footer>
+    </div>
+
+    </body>
+    </html>
+    
+
+    
+    
+
+
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.4.1/flowbite.min.js"></script>
+    </div>
+
+</body>
+</html>
