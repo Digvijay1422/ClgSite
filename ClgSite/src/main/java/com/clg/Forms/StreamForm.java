@@ -1,36 +1,25 @@
-package com.clg.Entities;
+package com.clg.Forms;
 
-
-import java.util.Optional;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Builder
-public class Streams {
-    @Id
+public class StreamForm {
+    
     private String streamId;
     private String quota;
     private String cutOff;
     private String streamName;
+    private String collegeId;
     private String streamFees;
     private String streamDuration;
-
-    @ManyToOne
-    private Colleges colleges;
-
-    
-
-
 }

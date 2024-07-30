@@ -1,5 +1,7 @@
 package com.clg.Controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,13 +11,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.clg.Entities.Colleges;
+import com.clg.Entities.Streams;
 import com.clg.Forms.CollegeForm;
+import com.clg.Forms.StreamForm;
 import com.clg.services.CollegeService;
+import com.clg.services.StreamService;
 
 @Controller
 @RequestMapping("/admin")
 public class adminController {
 
+    @Autowired
+    private StreamService streamService;
 
     @Autowired
     private CollegeService collegeService;
@@ -29,7 +36,7 @@ public class adminController {
         return "/Admin/addClg";
     }
 
-    @PostMapping("/add")
+    @PostMapping("/addClg")
     public String processClg(@ModelAttribute CollegeForm form)
     {
 
@@ -55,5 +62,35 @@ public class adminController {
 
         return "redirect:/admin/addClg";
     }
+
+    @GetMapping("/addStream")
+    public String addStream(Model model)
+    {
+       StreamForm  streamsForm = new StreamForm();
+       model.addAttribute("form", streamsForm);
+       return "/admin/addStream";
+    }
    
+
+    @PostMapping("/addStream")
+    public String addStream(@ModelAttribute StreamForm form)
+    {
+        System.out.println(form);
+
+        String id = form.getCollegeId();
+
+        Colleges colleges = collegeService.getCollegesById(id);
+
+        Streams streams = new Streams();
+        // streams.setStreamId(form.getStreamId());
+        streams.setStreamName(form.getStreamName());
+        streams.setStreamDuration(form.getStreamDuration());
+        streams.setStreamFees(form.getStreamFees());
+        streams.setQuota(form.getQuota());
+        streams.setCutOff(form.getCutOff());
+        streams.setColleges(colleges);
+        streamService.save(streams);
+
+        return "redirect:/admin/addStream";
+    }
 }

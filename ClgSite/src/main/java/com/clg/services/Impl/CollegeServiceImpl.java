@@ -1,5 +1,6 @@
 package com.clg.services.Impl;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,11 @@ public class CollegeServiceImpl implements CollegeService {
         String id = UUID.randomUUID().toString();
         college.setClgId(id);
        return collegeRepo.save(college);
+    }
+
+    @Override
+    public Colleges getCollegesById(String id) {
+        return collegeRepo.findById(id).orElse(null);
     }
 
 
