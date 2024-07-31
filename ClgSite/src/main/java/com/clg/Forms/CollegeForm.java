@@ -2,6 +2,9 @@ package com.clg.Forms;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,13 +21,22 @@ import lombok.ToString;
 public class CollegeForm {
     
     private String clgId;
-    private String clgName;
+    @NotBlank(message = "Name is required!!")
+    private String name;
+    @NotBlank
     private String clgLocation;
+    @Size(min = 8, max = 12,message = "Enter valid number")
     private String clgContact;
+    @Email(message = "Invalid email!!")
     private String clgEmail;
+    private String link;
+    private String fees;
+    @NotBlank
     private String address;
+    @NotBlank
     private String description;
     private String ratings;
+    @NotBlank
     private String streamsAvail;
     private MultipartFile picture;
 }

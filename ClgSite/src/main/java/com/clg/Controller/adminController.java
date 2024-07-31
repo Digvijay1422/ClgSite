@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,8 +15,13 @@ import com.clg.Entities.Colleges;
 import com.clg.Entities.Streams;
 import com.clg.Forms.CollegeForm;
 import com.clg.Forms.StreamForm;
+import com.clg.Helper.Message;
+import com.clg.Helper.MessageType;
 import com.clg.services.CollegeService;
 import com.clg.services.StreamService;
+
+import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/admin")
@@ -37,23 +43,32 @@ public class adminController {
     }
 
     @PostMapping("/addClg")
-    public String processClg(@ModelAttribute CollegeForm form)
+    public String processClg ( @ModelAttribute CollegeForm form,BindingResult bindingResult, HttpSession session)
     {
 
+        if(bindingResult.hasErrors()){
+            System.out.println("has error");
+            return "/admin/addClg";
+		}
         // process. 
         System.out.println(form);
 
         Colleges colleges = new Colleges();
 
         // colleges.setClgId(form.getClgId());
-        colleges.setClgName(form.getClgName());
+        colleges.setName(form.getName());
         colleges.setAddress(form.getAddress());
         colleges.setClgContact(form.getClgContact());
         colleges.setClgEmail(form.getClgEmail());
+        colleges.setFees(form.getFees());
+        colleges.setLink(form.getLink());
         colleges.setDescription(form.getDescription());
         colleges.setClgLocation(form.getClgLocation());
         colleges.setRatings(form.getRatings());
         colleges.setStreamsAvail(form.getStreamsAvail());
+
+        Message message = Message.builder().message("Registration Successful").type(MessageType.green).build();
+        session.setAttribute("message", message);
 
 
         collegeService.save(colleges);
@@ -85,7 +100,6 @@ public class adminController {
         // streams.setStreamId(form.getStreamId());
         streams.setStreamName(form.getStreamName());
         streams.setStreamDuration(form.getStreamDuration());
-        streams.setStreamFees(form.getStreamFees());
         streams.setQuota(form.getQuota());
         streams.setCutOff(form.getCutOff());
         streams.setColleges(colleges);

@@ -24,7 +24,6 @@ public class Streams {
     private String quota;
     private String cutOff;
     private String streamName;
-    private String streamFees;
     private String streamDuration;
 
     @ManyToOne

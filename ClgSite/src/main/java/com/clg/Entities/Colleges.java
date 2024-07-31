@@ -23,7 +23,7 @@ import lombok.Setter;
 public class Colleges {
     @Id
     private String clgId;
-    private String clgName;
+    private String name;
     private String clgLocation;
     private String clgContact;
     private String clgEmail;
@@ -31,6 +31,8 @@ public class Colleges {
     private String description;
     private String ratings;
     private String streamsAvail;
+    private String fees;
+    private String link;
     @OneToMany(mappedBy = "colleges",cascade = CascadeType.ALL,fetch = FetchType.LAZY,orphanRemoval = true)
     private List<Streams> streams = new ArrayList<>();
 
