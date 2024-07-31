@@ -17,7 +17,7 @@ public class StreamForm {
     
     private String streamId;
     private String quota;
-    private String cutOff;
+    private float cutOff;
     private String streamName;
     private String collegeId;
     private String streamFees;

@@ -22,7 +22,7 @@ public class CollegeForm {
     
     private String clgId;
     @NotBlank(message = "Name is required!!")
-    private String name;
+    private String clgName;
     @NotBlank
     private String clgLocation;
     @Size(min = 8, max = 12,message = "Enter valid number")
@@ -39,4 +39,5 @@ public class CollegeForm {
     @NotBlank
     private String streamsAvail;
     private MultipartFile picture;
+    private String stringPicture;
 }

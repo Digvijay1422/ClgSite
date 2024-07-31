@@ -22,7 +22,7 @@ public class Streams {
     @Id
     private String streamId;
     private String quota;
-    private String cutOff;
+    private float cutOff;
     private String streamName;
     private String streamDuration;
 

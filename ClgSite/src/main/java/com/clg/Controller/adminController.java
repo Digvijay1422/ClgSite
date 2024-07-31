@@ -1,6 +1,7 @@
 package com.clg.Controller;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import com.clg.Forms.StreamForm;
 import com.clg.Helper.Message;
 import com.clg.Helper.MessageType;
 import com.clg.services.CollegeService;
+import com.clg.services.ImageService;
 import com.clg.services.StreamService;
 
 import jakarta.servlet.http.HttpSession;
@@ -29,6 +31,9 @@ public class adminController {
 
     @Autowired
     private StreamService streamService;
+
+     @Autowired
+     private ImageService imageService;
 
     @Autowired
     private CollegeService collegeService;
@@ -53,10 +58,12 @@ public class adminController {
         // process. 
         System.out.println(form);
 
+        String fileName = UUID.randomUUID().toString();
+
         Colleges colleges = new Colleges();
 
         // colleges.setClgId(form.getClgId());
-        colleges.setName(form.getName());
+        colleges.setClgName(form.getClgName());
         colleges.setAddress(form.getAddress());
         colleges.setClgContact(form.getClgContact());
         colleges.setClgEmail(form.getClgEmail());
@@ -66,6 +73,10 @@ public class adminController {
         colleges.setClgLocation(form.getClgLocation());
         colleges.setRatings(form.getRatings());
         colleges.setStreamsAvail(form.getStreamsAvail());
+
+             String fileUrl = imageService.uploadImage(form.getPicture(),fileName);
+             colleges.setPicture(fileUrl);
+        
 
         Message message = Message.builder().message("Registration Successful").type(MessageType.green).build();
         session.setAttribute("message", message);
@@ -88,11 +99,13 @@ public class adminController {
    
 
     @PostMapping("/addStream")
-    public String addStream(@ModelAttribute StreamForm form)
+    public String addStream(@ModelAttribute StreamForm form, HttpSession session)
     {
         System.out.println(form);
 
         String id = form.getCollegeId();
+
+        
 
         Colleges colleges = collegeService.getCollegesById(id);
 
@@ -104,6 +117,9 @@ public class adminController {
         streams.setCutOff(form.getCutOff());
         streams.setColleges(colleges);
         streamService.save(streams);
+
+        Message message = Message.builder().message("Registration Successful").type(MessageType.green).build();
+        session.setAttribute("message", message);
 
         return "redirect:/admin/addStream";
     }
