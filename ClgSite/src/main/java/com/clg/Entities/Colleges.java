@@ -16,12 +16,14 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
+@ToString
 @NoArgsConstructor
 public class Colleges {
     @Id
@@ -37,6 +39,7 @@ public class Colleges {
     private String ratings;
     @Column(length = 1000)
     private String streamsAvail;
+    private boolean autonomous=false;
     private String picture;
     private String fees;
     private String link;

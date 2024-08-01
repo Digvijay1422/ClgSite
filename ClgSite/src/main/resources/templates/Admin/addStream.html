@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: parent(~{::#content},~{title},~{script})}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{Admin/adminBase :: parent(~{::#AdminContent},~{title},~{script})}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
         <link rel="stylesheet" data-th-href="@{'css/style.css'}">
     </head>
     <body>
-        <div id="content" th-data-fragment="content">
+        <div id="AdminContent" th-data-fragment="AdminContent">
 
 
             <div  class="grid grid-cols-12">
@@ -91,28 +91,192 @@
                           ></p> -->
                           </div>
                         </div>
-      
+
                         <div>
                           <label
-                            for="email"
+                            for="phone"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                            >Quota</label
-                          >
-                          <div class="relative mb-6">
-                            <!-- <div
-                              class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+                            >Open Quota CuttOff</label
                             >
-                            <i class="fa-solid fa-location-dot"></i>
-                            </div> -->
+                          <div class="relative mb-6">
+                            <div
+                            class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+                            >
+                            <i class="fa-solid fa-scissors"></i>                            </div>
                             <input
-                              type="text"
-                              data-th-field="*{quota}"
+                            type="number" step="0.01"                           
+                               id="cutOff"
+                              data-th-field="*{openQuotaCuttOff}"
+
                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            
+                              placeholder=""
                               required
-                              />
-                            </div>
+                            />
+                          </div>
                         </div>
+
+                        <div>
+                          <label
+                            for="phone"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                            >SC Quota CuttOff</label
+                            >
+                          <div class="relative mb-6">
+                            <div
+                            class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+                            >
+                            <i class="fa-solid fa-scissors"></i>                            </div>
+                            <input
+                            type="number" step="0.01"                           
+                               id="cutOff"
+                              data-th-field="*{scQuotaCuttOff}"
+
+                              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                              placeholder=""
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <label
+                            for="phone"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                            >VJ Quota CuttOff</label
+                            >
+                          <div class="relative mb-6">
+                            <div
+                            class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+                            >
+                            <i class="fa-solid fa-scissors"></i>                            </div>
+                            <input
+                            type="number" step="0.01"                           
+                               id="cutOff"
+                              data-th-field="*{vjQuotaCuttOff}"
+
+                              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                              placeholder=""
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <label
+                            for="phone"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                            >NT1 Quota CuttOff</label
+                            >
+                          <div class="relative mb-6">
+                            <div
+                            class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+                            >
+                            <i class="fa-solid fa-scissors"></i>                            </div>
+                            <input
+                            type="number" step="0.01"                           
+                               id="cutOff"
+                              data-th-field="*{nt1QuotaCuttOff}"
+
+                              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                              placeholder=""
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <label
+                            for="phone"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                            >NT2 Quota CuttOff</label
+                            >
+                          <div class="relative mb-6">
+                            <div
+                            class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+                            >
+                            <i class="fa-solid fa-scissors"></i>                            </div>
+                            <input
+                            type="number" step="0.01"                           
+                               id="cutOff"
+                              data-th-field="*{nt2QuotaCuttOff}"
+
+                              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                              placeholder=""
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <label
+                            for="phone"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                            >NT3 Quota CuttOff</label
+                            >
+                          <div class="relative mb-6">
+                            <div
+                            class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+                            >
+                            <i class="fa-solid fa-scissors"></i>                            </div>
+                            <input
+                            type="number" step="0.01"                           
+                               id="cutOff"
+                              data-th-field="*{nt3QuotaCuttOff}"
+
+                              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                              placeholder=""
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <label
+                            for="phone"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                            >OBC Quota CuttOff</label
+                            >
+                          <div class="relative mb-6">
+                            <div
+                            class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+                            >
+                            <i class="fa-solid fa-scissors"></i>                            </div>
+                            <input
+                            type="number" step="0.01"                           
+                               id="cutOff"
+                              data-th-field="*{obcQuotaCuttOff}"
+
+                              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                              placeholder=""
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          <label
+                            for="phone"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                            >TFWS Quota CuttOff</label
+                            >
+                          <div class="relative mb-6">
+                            <div
+                            class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+                            >
+                            <i class="fa-solid fa-scissors"></i>                            </div>
+                            <input
+                            type="number" step="0.01"                           
+                               id="cutOff"
+                              data-th-field="*{tfwsQuotaCuttOff}"
+
+                              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                              placeholder=""
+                              required
+                            />
+                          </div>
+                        </div>
+      
+                       
                         <div>
                           <label
                             for="email"
@@ -138,31 +302,10 @@
                         </div> 
                        
       
-                        <div>
-                          <label
-                            for="phone"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                            >Cut Off</label
-                            >
-                          <div class="relative mb-6">
-                            <div
-                            class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
-                            >
-                            <i class="fa-solid fa-scissors"></i>                            </div>
-                            <input
-                            type="number" step="0.01"                           
-                               id="cutOff"
-                              data-th-field="*{cutOff}"
-
-                              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                              placeholder=""
-                              required
-                            />
-                          </div>
-                        </div>
-
-                        <!-- CheckBox  -->
                        
+
+                        
+                        <!-- buttons -->
       
                       <div class="button_container flex items-center justify-center space-x-2">
       

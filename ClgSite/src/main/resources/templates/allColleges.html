@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: parent(~{::#content},~{title},~{script})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" data-th-href="@{'/css/output.css'}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.4.1/flowbite.min.css" rel="stylesheet" />
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>College Selection</title>
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" data-th-href="@{'css/style.css'}">
+    </head>
+    <body>
+        <div id="content" th-data-fragment="content">
+
+            <div style="margin-top: 10px; ">
+
+                <div 
+                data-th-object="${c}"
+                data-th-each="c:${colleges}"
+                class="p-3">
+                <!-- sidebar -->
+                
+                <!-- user is logged in : sidebar -->
+          
+                
+          
+                <div style="height: 300px;" class="p-2 mx-auto bg-white dark:bg-gray-700 dark:text-white shadow-lg rounded-lg overflow-hidden md:flex">
+                    <!-- Left Side: Image -->
+                    <div class="md:w-1/2">
+                        <img data-th-src="*{picture}" src="https://via.placeholder.com/400" alt="Placeholder Image" class="w-full h-full object-cover">
+                    </div>
+                    
+                    <!-- Right Side: Information -->
+                    <div class="p-6  md:w-1/2">
+                        <h2 data-th-text="*{clgName}" class="text-2xl font-bold text-gray-800  dark:text-white mb-4">Title Here</h2>
+                        
+                        <div class=" flex flex-col">
+
+                            <div  class="mt-1" style="width: 1100px;">
+                                
+                                <label class="font-bold" for="Address">Streams : </label>
+                                <span data-th-text="*{streamsAvail}"></span>
+                            </div>
+                            <div class="mt-1">
+                                
+                                <label class="font-bold" for="Address">Address : </label>
+                                <span data-th-text="*{address}"></span>
+                            </div>
+                            
+                            <div class="mt-1">
+
+                                <labe class="font-bold"l for="Address">Ratings : </labe>
+                                <span data-th-text="*{ratings}"></span>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            
+                            <div class="mt-1">
+                                
+                                <label  class="font-bold" for="Address">Autonomous : </label>
+                                <span data-th-if="*{autonomous}">
+                                    <i class="fa-solid fa-check"></i>
+                                </span>
+                                <span data-th-unless="*{autonomous}">
+                                    <i class="fa-solid fa-xmark"></i>                               
+                                </span>
+                                
+                            </div >
+                            <a href="#" class="text-indigo-500 mt-1 hover:text-indigo-600 font-semibold">Read More</a>
+                        </div>
+                    </div>
+                </div>
+          
+            </div>
+            
+            
+        </div>
+        </div>
+        
+    </body>
+    </html>
+    
+
+    
+    
+    
+
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.4.1/flowbite.min.js"></script>
+    </div>
+
+</body>
+</html>

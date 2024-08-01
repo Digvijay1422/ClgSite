@@ -48,13 +48,13 @@ public class adminController {
     }
 
     @PostMapping("/addClg")
-    public String processClg ( @ModelAttribute CollegeForm form,BindingResult bindingResult, HttpSession session)
+    public String processClg ( @ModelAttribute CollegeForm form, HttpSession session)
     {
 
-        if(bindingResult.hasErrors()){
-            System.out.println("has error");
-            return "/admin/addClg";
-		}
+        // if(bindingResult.hasErrors()){
+        //     System.out.println("has error");
+        //     return "/admin/addClg";
+		// }
         // process. 
         System.out.println(form);
 
@@ -66,6 +66,7 @@ public class adminController {
         colleges.setClgName(form.getClgName());
         colleges.setAddress(form.getAddress());
         colleges.setClgContact(form.getClgContact());
+        colleges.setAutonomous(form.isAutonomous());
         colleges.setClgEmail(form.getClgEmail());
         colleges.setFees(form.getFees());
         colleges.setLink(form.getLink());
@@ -101,20 +102,21 @@ public class adminController {
     @PostMapping("/addStream")
     public String addStream(@ModelAttribute StreamForm form, HttpSession session)
     {
-        System.out.println(form);
+        // System.out.println(form);
 
         String id = form.getCollegeId();
-
-        
-
         Colleges colleges = collegeService.getCollegesById(id);
 
         Streams streams = new Streams();
-        // streams.setStreamId(form.getStreamId());
         streams.setStreamName(form.getStreamName());
         streams.setStreamDuration(form.getStreamDuration());
-        streams.setQuota(form.getQuota());
-        streams.setCutOff(form.getCutOff());
+        streams.setNt1QuotaCuttOff(form.getNt1QuotaCuttOff());
+        streams.setNt2QuotaCuttOff(form.getNt2QuotaCuttOff());
+        streams.setNt3QuotaCuttOff(form.getNt3QuotaCuttOff());
+        streams.setOpenQuotaCuttOff(form.getOpenQuotaCuttOff());
+        streams.setObcQuotaCuttOff(form.getObcQuotaCuttOff());
+        streams.setScQuotaCuttOff(form.getScQuotaCuttOff());
+        streams.setTfwsQuotaCuttOff(form.getTfwsQuotaCuttOff());
         streams.setColleges(colleges);
         streamService.save(streams);
 

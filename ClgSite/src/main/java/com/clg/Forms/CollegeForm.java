@@ -35,6 +35,7 @@ public class CollegeForm {
     private String address;
     @NotBlank
     private String description;
+    private boolean autonomous=false;
     private String ratings;
     @NotBlank
     private String streamsAvail;

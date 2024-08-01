@@ -1,5 +1,6 @@
 package com.clg.services.Impl;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -26,6 +27,14 @@ public class CollegeServiceImpl implements CollegeService {
     @Override
     public Colleges getCollegesById(String id) {
         return collegeRepo.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Colleges> getAllColleges() {
+       
+        List<Colleges> colleges = collegeRepo.findAll();
+
+        return colleges;
     }
 
 

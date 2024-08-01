@@ -3,7 +3,7 @@
   lang="en"
   class="dark:"
   xmlns:th="http://www.thymeleaf.org"
-  th:fragment="parent(content,title,script)"
+  th:fragment="parent(AdminContent,title,script)"
 >
   <head>
     <meta charset="UTF-8" />
@@ -26,19 +26,14 @@
   <body class="dark: dark:bg-gray-900 bg-gray-100 dark:text-white">
     <h1>basee</h1>
 
-    <!-- navbar condtions -->
-    <!-- <div th:if="${loggedInUser}">
-      <div data-th-replace="~{user/user_navbar::user_navbar}"></div>
-    </div>
-  </div> -->
-   
-      <div data-th-replace="~{navbar::navbar}"></div>
+  
     
+      <div data-th-replace="~{Admin/adminNavbar::navbar}"></div>
     
 
 
     
-    <div data-th-replace="${content}"></div>
+    <div data-th-replace="${AdminContent}"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.4.1/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    
