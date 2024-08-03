@@ -15,18 +15,6 @@ public class AppConfig {
     private String apiKey;
     @Value("${Cloudenary.api.secret}")
     private String apiSecret;
-    // @Bean
-    // public Cloudinary cloudinary()
-    // {
-    //     return new Cloudinary(
-    //         ObjectUtils.asMap(
-    //             "cloud_name" , "dlrtmrmuy",
-    //             "api_key" , "279395444683225",
-    //             "api_secret" , "-TAX-OlrOnL7Up5wVQ336awekeY"
-    
-    //         )
-    //     );
-    // }
 
     @Bean
     public Cloudinary cloudinary()

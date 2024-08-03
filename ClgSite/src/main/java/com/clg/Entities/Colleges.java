@@ -33,12 +33,14 @@ public class Colleges {
     private String clgContact;
     private String clgEmail;
     private String address;
+    private String medianSalary;
+
     @Column(length = 1000)
     private String description;
     private String cloudinaryImagePublicId;
     private String ratings;
     @Column(length = 1000)
-    private String streamsAvail;
+    private int streamsAvail;
     private boolean autonomous=false;
     private String picture;
     private String fees;

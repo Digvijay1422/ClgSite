@@ -37,8 +37,9 @@ public class CollegeForm {
     private String description;
     private boolean autonomous=false;
     private String ratings;
+    private String medianSalary;
     @NotBlank
-    private String streamsAvail;
+    private int streamsAvail;
     private MultipartFile picture;
     private String stringPicture;
 }

@@ -12,9 +12,15 @@
         <title>College Selection</title>
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link rel="stylesheet" data-th-href="@{'css/style.css'}">
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+            integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMRx1c4u6GGTB6h+OwY4uQqc/EJ0zh7fJgXH9JL"
+            crossorigin="anonymous"
+        />
     </head>
     <body>
-        <div id="content" th-data-fragment="content">
+        <div  id="content" th-data-fragment="content">
 
             <div style="margin-top: 10px; ">
 
@@ -23,53 +29,117 @@
                 data-th-each="c:${colleges}"
                 class="p-3">
                 <!-- sidebar -->
-                
-                <!-- user is logged in : sidebar -->
-          
-                
-          
-                <div style="height: 300px;" class="p-2 mx-auto bg-white dark:bg-gray-700 dark:text-white shadow-lg rounded-lg overflow-hidden md:flex">
+
+                <div style="height: 250px;" class="p-2 mx-auto bg-white dark:bg-gray-700 dark:text-white shadow-lg rounded-lg overflow-hidden md:flex">
                     <!-- Left Side: Image -->
-                    <div class="md:w-1/2">
-                        <img data-th-src="*{picture}" src="https://via.placeholder.com/400" alt="Placeholder Image" class="w-full h-full object-cover">
+                    <div class="">
+                        <img data-th-src="*{picture}" src="https://via.placeholder.com/400" alt="Placeholder Image" class=" h-full object-cover">
                     </div>
                     
                     <!-- Right Side: Information -->
-                    <div class="p-6  md:w-1/2">
-                        <h2 data-th-text="*{clgName}" class="text-2xl font-bold text-gray-800  dark:text-white mb-4">Title Here</h2>
-                        
-                        <div class=" flex flex-col">
+                    <div class="p-3 ">
+                        <div class="shadow-lg rounded-lg bg-gray-300 p-2 dark:bg-gray-500">
 
-                            <div  class="mt-1" style="width: 1100px;">
+                            <h2 data-th-text="*{clgName}" class="text-2xl  font-bold text-red-500  dark:text-white mb-1">Title here</h2>
+                            <div class="mb-2">
+                                <i class="fa-solid fa-location-dot"></i>    
+                                <span data-th-text="*{clgLocation}"></span>
+                            </div>
+                        </div>
+                        <div class=" flex flex-row">
+
+                            <div class="flex flex-col p-3 gap-3">
+
                                 
-                                <label class="font-bold" for="Address">Streams : </label>
+                                <div  class="mt-1 " style="">
+                                
+                                    <label class="font-bold" for="Address">Streams : </label>
                                 <span data-th-text="*{streamsAvail}"></span>
-                            </div>
-                            <div class="mt-1">
-                                
-                                <label class="font-bold" for="Address">Address : </label>
-                                <span data-th-text="*{address}"></span>
-                            </div>
-                            
-                            <div class="mt-1">
+                                </div>
 
+                                <div  class="mt-1 " style="">
+                                
+                                    <label class="font-bold" for="Address">MediannSalary : </label>
+                                <span data-th-text="*{medianSalary}"></span>
+                                </div>
+
+                                <div class="mt-1">
+                            
+                                    <label  class="font-bold" for="Address">Autonomous : </label>
+                                    <span data-th-if="*{autonomous}">
+                                        <i class="fa-solid fa-check"></i>
+                                    </span>
+                                    <span data-th-unless="*{autonomous}">
+                                        <i class="fa-solid fa-xmark"></i>                               
+                                    </span>
+                                    
+                                </div >
+                               
+                        </div>
+
+                        <div class="absolute" style="padding-left: 250px;">
+
+                            <div class="p-3 flex flex-col gap-3">
+                                
+                            <div class="mt-1">
+        
                                 <labe class="font-bold"l for="Address">Ratings : </labe>
                                 <span data-th-text="*{ratings}"></span>
+                                
+                                
                                 <i class="fa-regular fa-star"></i>
                             </div>
+                           
+
+                            <div  class="mt-1 " style="">
+                                
+                                <label class="font-bold" for="Address">Fees : </label>
+                            <span data-th-text="*{fees}"></span>
+                            </div>
+
                             
-                            <div class="mt-1">
+                            <div  class="mt-1  " >
                                 
-                                <label  class="font-bold" for="Address">Autonomous : </label>
-                                <span data-th-if="*{autonomous}">
-                                    <i class="fa-solid fa-check"></i>
-                                </span>
-                                <span data-th-unless="*{autonomous}">
-                                    <i class="fa-solid fa-xmark"></i>                               
-                                </span>
+                                <label class="font-bold " for="Address">Contact : </label>
+                            <span class="" data-th-text="*{clgContact}"></span>
+                            </div>
+                            
+                            
+                           
+                        </div>
+
+                    </div>
+                        <div class="absolute" style="padding-left: 500px;">
+
+                            <div  class="p-3 right-10  mt-4  flex flex-col gap-3">
                                 
-                            </div >
-                            <a href="#" class="text-indigo-500 mt-1 hover:text-indigo-600 font-semibold">Read More</a>
+                                <div>
+                                    
+                                    
+                                <a data-th-href="*{link}" target="_blank" class=" ml-6 py-2.5 px-5 p-5 me-2 mb-2 text-lg font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-blue-600 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-blue-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-white dark:border-blue-600 dark:hover:text-white dark:hover:bg-gray-700">Apply Now</a>
+                            </div>
+                            
+                            <div class="mt-3">
+                                
+                                        
+                                <a  class=" ml-6 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                            See More
+                                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                            </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="pl-3">
+                            
+                            
+                            
+                            
+                        </div>
+                       
+                       
+                            <!-- <a href="#" class="text-indigo-500 mt-1 hover:text-indigo-600 font-semibold">Read More</a> -->
                         </div>
                     </div>
                 </div>

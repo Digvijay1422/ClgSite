@@ -69,6 +69,7 @@ public class adminController {
         colleges.setAutonomous(form.isAutonomous());
         colleges.setClgEmail(form.getClgEmail());
         colleges.setFees(form.getFees());
+        colleges.setMedianSalary(form.getMedianSalary());
         colleges.setLink(form.getLink());
         colleges.setDescription(form.getDescription());
         colleges.setClgLocation(form.getClgLocation());
