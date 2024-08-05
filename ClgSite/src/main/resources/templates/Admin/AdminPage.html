@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{Admin/adminBase :: parent(~{::#AdminContent},~{title},~{script})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" data-th-href="@{'/css/output.css'}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.4.1/flowbite.min.css" rel="stylesheet" />
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>College Selection</title>
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" data-th-href="@{'css/style.css'}">
+    </head>
+    <body>
+        <div id="AdminContent" th-data-fragment="AdminContent">
+
+
+           <a data-th-href="@{'/admin/addClg'}">Add College</a>
+           <a data-th-href="@{'/admin/addStream'}">Add Stream</a>
+        
+    </div>
+
+    </body>
+    </html>
+    
+
+    
+    
+
+
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.4.1/flowbite.min.js"></script>
+    </div>
+
+</body>
+</html>

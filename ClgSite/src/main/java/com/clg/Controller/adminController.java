@@ -38,6 +38,13 @@ public class adminController {
     @Autowired
     private CollegeService collegeService;
 
+
+    @GetMapping(value = "/adminPage")
+    private String adminPage()
+    {
+        return "Admin/AdminPage";
+    }
+
     @GetMapping("/addClg")
     public String adminHome(Model model)
     {
@@ -113,6 +120,7 @@ public class adminController {
         streams.setStreamDuration(form.getStreamDuration());
         streams.setNt1QuotaCuttOff(form.getNt1QuotaCuttOff());
         streams.setNt2QuotaCuttOff(form.getNt2QuotaCuttOff());
+        streams.setVjQuotaCuttOff(form.getVjQuotaCuttOff());
         streams.setNt3QuotaCuttOff(form.getNt3QuotaCuttOff());
         streams.setOpenQuotaCuttOff(form.getOpenQuotaCuttOff());
         streams.setObcQuotaCuttOff(form.getObcQuotaCuttOff());

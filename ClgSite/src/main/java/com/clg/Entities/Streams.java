@@ -25,7 +25,6 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 @Builder
 public class Streams {
     @Id

@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.FormLoginConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 
 
@@ -12,55 +13,44 @@ public class Config {
 
 
 
-    // @Bean
-    // public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception
-    // {
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception
+    {
 
         
-    //     httpSecurity.authorizeHttpRequests(authorize->{
-    //         authorize.requestMatchers("/admin/*").authenticated();
-    //         authorize.anyRequest().permitAll();
-    //     });
+        httpSecurity.authorizeHttpRequests(authorize->{
+            authorize.requestMatchers("/admin/**").authenticated()
+            .anyRequest().permitAll();
+        });
 
-    //     httpSecurity.formLogin(formLogin->{
-	// 		formLogin.loginPage("/login")
-	// 		.loginProcessingUrl("/authenticate")
-	// 		.successForwardUrl("/admin/addClg")
-    //         .successForwardUrl("/admin/addStream")
-	// 		.failureForwardUrl("/login?error=true");
-			
-			
-	// 		// .usernameParameter("email")
-	// 		// .passwordParameter("password");
+        // httpSecurity.formLogin(formLogin->{
+		// 	formLogin.loginPage("/login")
+		// 	.loginProcessingUrl("/do-login")
+		// 	.successForwardUrl("/admin/adminPage")
+		// 	.failureForwardUrl("/login?error=true")
+        //     .usernameParameter("name")
+        //     .passwordParameter("password");
 
-    //         try {
-    //             httpSecurity.csrf(AbstractHttpConfigurer::disable);
-    //         } catch (Exception e) {
-    //             // TODO Auto-generated catch block
-    //             e.printStackTrace();
-    //         }
+        //     System.out.println("formlogin");
+          
 
-    //         // httpSecurity.logout(logout->{
-    //         //     logout.logoutUrl("/do-logout")
-    //         //     .logoutSuccessUrl("/login?logout=true");
-    //         // });
-    //         try {
-    //             httpSecurity.logout(logout->{
-    //                 logout.logoutUrl("/logout")
-    //                 .logoutSuccessUrl("/login?logout=true");
-    //             });
-    //         } catch (Exception e) {
-    //             // TODO Auto-generated catch block
-    //             e.printStackTrace();
-    //         }
+		// });
+
+        // httpSecurity.csrf(AbstractHttpConfigurer::disable);
+
+        // httpSecurity.logout(logout->{
+
+        //     logout.logoutUrl("/do-logout")
+        //     .logoutSuccessUrl("/login?logout=true");
+        //    });
             
 
-	// 	});
 
 
-
-    //     return httpSecurity.build();
+        return httpSecurity.build();
         
-    // }
+    }
+
+   
     
 }

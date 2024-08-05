@@ -1,5 +1,6 @@
 package com.clg.services.Impl;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,13 @@ public class StreamServiceImpl  implements StreamService{
         return streamRepo.save(streams);
 
 
+    }
+
+    @Override
+    public List<Streams> getStreamsByCollegeIdList(String id) {
+        
+        List<Streams> streams = streamRepo.findByCollegesClgId(id);
+        return streams;
     }
     
 }
