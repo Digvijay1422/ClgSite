@@ -18,10 +18,10 @@ public class Config {
     {
 
         
-        httpSecurity.authorizeHttpRequests(authorize->{
-            authorize.requestMatchers("/admin/**").authenticated()
-            .anyRequest().permitAll();
-        });
+        // httpSecurity.authorizeHttpRequests(authorize->{
+        //     authorize.requestMatchers("/admin/**").authenticated()
+        //     .anyRequest().permitAll();
+        // });
 
         // httpSecurity.formLogin(formLogin->{
 		// 	formLogin.loginPage("/login")

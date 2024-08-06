@@ -9,4 +9,5 @@ public interface StreamService {
 
     public List<Streams> getStreamsByCollegeIdList(String id);
     
+    public List<Streams> findAll();
 }

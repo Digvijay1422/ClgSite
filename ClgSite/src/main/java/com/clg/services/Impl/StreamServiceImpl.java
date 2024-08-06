@@ -32,5 +32,10 @@ public class StreamServiceImpl  implements StreamService{
         List<Streams> streams = streamRepo.findByCollegesClgId(id);
         return streams;
     }
+
+    @Override
+    public List<Streams> findAll() {
+        return streamRepo.findAll();
+    }
     
 }
