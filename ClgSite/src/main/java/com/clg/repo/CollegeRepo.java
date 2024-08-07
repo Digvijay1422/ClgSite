@@ -6,7 +6,5 @@ import com.clg.Entities.Colleges;
 
 public interface CollegeRepo extends JpaRepository<Colleges,String> {
     
-    
-
-    
+     
 }

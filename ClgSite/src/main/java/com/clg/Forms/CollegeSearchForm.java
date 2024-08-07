@@ -17,9 +17,9 @@ public class CollegeSearchForm {
     
     private float cetMarks;
     private int pcmMarks=150;
-    private String qouta;
-    private String stream;
-    private String location;
-    private String autonomous;
+    private String qouta="open";
+    private String stream="all";
+    private String location="kolhapur";
+    private String autonomous="yes";
 
 }

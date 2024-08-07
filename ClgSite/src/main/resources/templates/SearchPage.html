@@ -18,6 +18,7 @@
             <header class="bg-blue-600 dark:bg-blue-800">
                 <div class="container mx-auto py-4">
                     <h1 class="text-white text-3xl font-bold text-center">FindMyCollege</h1>
+                  
                 </div>
             </header>
             <main class="container mx-auto mt-8">
@@ -41,14 +42,14 @@
                                 <label for="quota" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Quota:</label>
                                 <select data-th-field="*{qouta}"  class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100">
                                     <option value="">Select Quota</option>
-                                    <option value="open">General</option>
-                                    <option value="obc">OBC</option>
-                                    <option value="sc">SC</option>
-                                    <option value="vj">VJ</option>
-                                    <option value="nt1">NT-1</option>
-                                    <option value="nt2">NT-2</option>
-                                    <option value="nt3">NT-3</option>
-                                    <option value="tfws">TFWS</option>
+                                    <option value="openQuotaCuttOff">General</option>
+                                    <option value="obcQuotaCuttOff">OBC</option>
+                                    <option value="scQuotaCuttOff">SC</option>
+                                    <option value="vjQuotaCuttOff">VJ</option>
+                                    <option value="nt1QuotaCuttOff">NT-1</option>
+                                    <option value="nt2QuotaCuttOff">NT-2</option>
+                                    <option value="nt3QuotaCuttOff">NT-3</option>
+                                    <option value="tfwsQuotaCuttOff">TFWS</option>
                                 </select>
                             </div>
                             <div class="flex-1 mt-4 md:mt-0">
@@ -99,44 +100,41 @@
                 </section>
             </main>
             
-
+            <!-- Search Result Table  -->
           
             <div class="container  mx-auto flex items-center justify-center">
-                <table class="mb-24 shadow-lg divide-y divide-gray-200 dark:divide-gray-700  w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600">
+                <table  class="mb-24 shadow-md divide-y divide-gray-200 dark:divide-gray-700  w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600">
                     <thead>
                         <tr   class="bg-gray-200 dark:bg-gray-700 border-b border-gray-300 dark:border-gray-600">
                             <th class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-left text-gray-800 dark:text-gray-200">Streams / Qouta</th>
-                            <th class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-left text-gray-800 dark:text-gray-200">General</th>
-                            <th class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-left text-gray-800 dark:text-gray-200">SC</th>
-                            <th class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-left text-gray-800 dark:text-gray-200">VJ</th>
-                            <th class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-left text-gray-800 dark:text-gray-200">NT-1</th>
-                            <th class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-left text-gray-800 dark:text-gray-200">NT-2</th>
-                            <th class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-left text-gray-800 dark:text-gray-200">NT-3</th>
-                            <th class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-left text-gray-800 dark:text-gray-200">OBC</th>
-                            <th class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-left text-gray-800 dark:text-gray-200">TFWS</th>
+                            <th class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-left text-gray-800 dark:text-gray-200">CuttOff</th>
                             <th class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-left text-gray-800 dark:text-gray-200">College Name</th>
+                            <th class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-left text-gray-800 dark:text-gray-200">Location</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white shadow-lg dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
                         <tr data-th-object="${c}" data-th-each="c:${streams}" class="border-b border-gray-300 dark:border-gray-600">
                             <td data-th-text="*{streamName}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 1</td>
-                            <td data-th-text="*{openQuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 2</td>
-                            <td data-th-text="*{scQuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 3</td>
-                            <td data-th-text="*{vjQuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 4</td>
-                            <td data-th-text="*{nt1QuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 5</td>
-                            <td data-th-text="*{nt2QuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 6</td>
-                            <td data-th-text="*{nt3QuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 7</td>
-                            <td data-th-text="*{obcQuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 8</td>
-                            <td data-th-text="*{tfwsQuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 8</td>
-                            <td data-th-text="*{colleges.clgName}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 8</td>
-                        </tr>
-                       
-                       
+                            <td data-th-if="${qouta == 'openQuotaCuttOff'}" data-th-text="*{openQuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 2</td>
+                            <td data-th-if="${qouta == 'scQuotaCuttOff'}" data-th-text="*{scQuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 3</td>
+                            <td data-th-if="${qouta == 'vjQuotaCuttOff'}" data-th-text="*{vjQuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 4</td>
+                            <td data-th-if="${qouta == 'nt1QuotaCuttOff'}" data-th-text="*{nt1QuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 5</td>
+                            <td data-th-if="${qouta == 'nt2QuotaCuttOff'}" data-th-text="*{nt2QuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 6</td>
+                            <td data-th-if="${qouta == 'nt3QuotaCuttOff'}" data-th-text="*{nt3QuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 7</td>
+                            <td data-th-if="${qouta == 'obcQuotaCuttOff'}" data-th-text="*{obcQuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 8</td>
+                            <td data-th-if="${qouta == 'tfwsQuotaCuttOff'}" data-th-text="*{tfwsQuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 8</td>
+                            <td  class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">   <a data-th-text="*{colleges.clgName}" class="hover:text-blue-800"  data-th-href="@{'/CollegeInfo/'+*{colleges.clgId}}"></a>           </td>
+                            <td data-th-text="*{colleges.clgLocation}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 8</td>
+                        </tr>      
                     </tbody>
                 </table>
             </div>
-            
-        
+            <!-- <div data-th-if="${streams}">
+
+                <h1 
+                data-th-if="${streams.empty}"
+                class="text-5xl text-red-500 p-5 text-center dark:text-red-500">No Result Found!!</h1>
+            </div> -->
       </div>
 
     </body>

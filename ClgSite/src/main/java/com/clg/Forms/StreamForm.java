@@ -19,6 +19,16 @@ public class StreamForm {
     private String streamName;
     private String collegeId;
     private String streamFees;
+    private float openQuotaCuttOff;
+    private float scQuotaCuttOff;
+    private float vjQuotaCuttOff;
+    private float nt1QuotaCuttOff;
+    private float nt2QuotaCuttOff;
+    private float nt3QuotaCuttOff;
+    private float obcQuotaCuttOff;
+    private float tfwsQuotaCuttOff;
+
+    private String streamDuration;
 
     public String getStreamId() {
         return streamId;
@@ -124,14 +134,5 @@ public class StreamForm {
         this.streamDuration = streamDuration;
     }
 
-    private float openQuotaCuttOff;
-    private float scQuotaCuttOff;
-    private float vjQuotaCuttOff;
-    private float nt1QuotaCuttOff;
-    private float nt2QuotaCuttOff;
-    private float nt3QuotaCuttOff;
-    private float obcQuotaCuttOff;
-    private float tfwsQuotaCuttOff;
-
-    private String streamDuration;
+   
 }
