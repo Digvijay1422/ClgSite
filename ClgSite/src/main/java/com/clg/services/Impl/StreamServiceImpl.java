@@ -81,6 +81,93 @@ public class StreamServiceImpl  implements StreamService{
         return streamRepo.findByCutOffTfws(marks);
     }
 
+
+    //Streams
+    @Override
+    public List<Streams> findByCutOffGenaralStreams(float marks,String name) {
+        return streamRepo.findByCuttOffGeneralStream(marks, name);
+    }
+
+    
+    @Override
+    public List<Streams> findByCutOffVjStreams(float marks, String streamName) {
+       return streamRepo.findByCuttOffVjStream(marks, streamName);
+    }
+
+    @Override
+    public List<Streams> findByCutOffScStreams(float marks, String streamName) {
+       return streamRepo.findByCuttOffScStream(marks, streamName);
+    }
+
+    @Override
+    public List<Streams> findByCutOffNt1Streams(float marks, String streamName) {
+       return streamRepo.findByCuttOffNt1Stream(marks, streamName);
+    }
+
+    @Override
+    public List<Streams> findByCutOffNt2Streams(float marks, String streamName) {
+        return streamRepo.findByCuttOffNt2Stream(marks, streamName);
+    }
+
+    @Override
+    public List<Streams> findByCutOffNt3Streams(float marks, String streamName) {
+       return streamRepo.findByCuttOffNt3Stream(marks, streamName);
+    }
+    
+    @Override
+    public List<Streams> findByCutOffObcStreams(float marks, String streamName) {
+       return streamRepo.findByCuttOffObcStream(marks, streamName);
+    }
+
+    @Override
+    public List<Streams> findByCutOffTfwsStreams(float marks, String streamName) {
+        return streamRepo.findByCuttOffTfwsStream(marks, streamName);
+    }
+
+    
+    
+    //location,stream, qouta
+
+    public List<Streams> findByCuttOffGeneralLocation(float marks,String name,String location)
+    {
+        
+        return streamRepo.findByCutOffOpenLocation(marks, name, location);
+    }
+
+    @Override
+    public List<Streams> findByCuttOffScLocation(float marks, String name, String location) {
+      return streamRepo.findByCutOffScLocation(marks, name, location);
+    }
+
+    @Override
+    public List<Streams> findByCuttOffVjLocation(float marks, String name, String location) {
+        return streamRepo.findByCutOffVjLocation(marks, name, location);
+    }
+
+    @Override
+    public List<Streams> findByCuttOffNt1Location(float marks, String name, String location) {
+       return streamRepo.findByCutOffNt1Location(marks, name, location);
+    }
+
+    @Override
+    public List<Streams> findByCuttOffNt2Location(float marks, String name, String location) {
+        return streamRepo.findByCutOffNt2Location(marks, name, location);
+    }
+
+    @Override
+    public List<Streams> findByCuttOffNt3Location(float marks, String name, String location) {
+        return streamRepo.findByCutOffNt3Location(marks, name, location);
+    }
+
+    @Override
+    public List<Streams> findByCuttOffObcLocation(float marks, String name, String location) {
+        return streamRepo.findByCutOffObcLocation(marks, name, location);
+    }
+
+    @Override
+    public List<Streams> findByCuttOffTfwsLocation(float marks, String name, String location) {
+       return streamRepo.findByCutOffTfwsLocation(marks, name, location);
+    }
     
     
 }

@@ -19,7 +19,7 @@ public class CollegeSearchForm {
     private int pcmMarks=150;
     private String qouta="open";
     private String stream="all";
-    private String location="kolhapur";
-    private String autonomous="yes";
+    private String location="All";
+    private String autonomous="both";
 
 }
