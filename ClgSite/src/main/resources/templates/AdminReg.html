@@ -20,20 +20,21 @@
             class="block max-w-md p-6 border-t-8 bg-white  border-blue-700 rounded-lg shadow  dark:bg-gray-800 dark:border-blue-700 "
           >
 
-          <!-- <div data-th-replace="~{message::messageBox}"></div> -->
+          <div data-th-replace="~{message::messagebox}"></div>
           
           
           <h5
           class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
           >
-          Login
+          Register
         </h5>
-        <div class="text-red-500 text-center" data-th-if="${param.error}">Invalid Username Password</div>
+        <!-- <div class="text-red-500 text-center" data-th-if="${param.error}">Invalid Username Password</div> -->
             
-            <form data-th-action="@{'/authenticate'}"
+            <form data-th-action="@{'/reg'}"
               method="post" 
               class="max-w-sm mx-auto mt-5"
-              novalidate
+              data-th-object="${admin}"
+             
               >
 
               
@@ -47,6 +48,7 @@
                   name="Username"
                   type="text"
                   id="Username"
+                  data-th-field="*{username}"
 
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Enter Your Username..."
@@ -66,6 +68,7 @@
                 name="password"
                   type="password"
                   id="password"
+                  data-th-field="*{password}"
                   
 
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -83,15 +86,10 @@
                   type="submit"
                   class="text-white mt-2  bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
-                  SignUp
+                  Register
                 </button>
                 
-                <button
-                  type="reset"
-                  class="text-white mt-2  bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  >
-                  Reset
-                </button>
+               
                 
             </div>
             </form>

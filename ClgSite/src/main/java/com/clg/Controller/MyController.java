@@ -1,6 +1,7 @@
 package com.clg.Controller;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,15 +9,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.clg.Entities.Admin;
 import com.clg.Entities.Colleges;
 import com.clg.Entities.Streams;
+import com.clg.Forms.AdminForm;
 import com.clg.Forms.CollegeSearchForm;
 import com.clg.Helper.Message;
 import com.clg.Helper.MessageType;
 import com.clg.services.CollegeService;
 import com.clg.services.StreamService;
+import com.clg.services.Impl.AdminServiceImpl;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -25,6 +30,9 @@ public class MyController {
 
     @Autowired
     private CollegeService collegeService;
+
+     @Autowired
+    private AdminServiceImpl adminServiceImpl;
 
     @Autowired
     private StreamService streamService;
@@ -35,16 +43,11 @@ public class MyController {
     }
 
     @GetMapping("/login")
-    public String adminForm() {
+    public String adminForm(Model model) {
         return "login";
     }
 
-    // @PostMapping("/login")
-    // public String adminLogin()
-    // {
-    // return "/Admin/AdminPage";
-    // }
-
+   
     @GetMapping("allColleges")
     public String allColleges(Model model) {
 
@@ -82,9 +85,7 @@ public class MyController {
             return "redirect:/search";
         }
 
-        System.out.println(searchForm);
         String qouta = searchForm.getQouta();
-        System.out.println(qouta);
         model.addAttribute("qouta", qouta);
 
         String inputStream = searchForm.getStream();
@@ -134,36 +135,29 @@ public class MyController {
 
             } else if (qouta.equalsIgnoreCase("obcQuotaCuttOff")) {
 
-                // System.out.println("Inloop");
                 streams = streamService.findByCutOffObcStreams(searchForm.getCetMarks() + 1, inputStream);
 
             } else if (qouta.equalsIgnoreCase("scQuotaCuttOff")) {
 
-                // System.out.println("Inloop");
                 streams = streamService.findByCutOffScStreams(searchForm.getCetMarks() + 1, inputStream);
 
             } else if (qouta.equalsIgnoreCase("vjQuotaCuttOff")) {
 
-                // System.out.println("Inloop");
                 streams = streamService.findByCutOffVjStreams(searchForm.getCetMarks() + 1, inputStream);
 
             } else if (qouta.equalsIgnoreCase("nt1QuotaCuttOff")) {
 
-                // System.out.println("Inloop");
                 streams = streamService.findByCutOffNt1Streams(searchForm.getCetMarks() + 1, inputStream);
 
             } else if (qouta.equalsIgnoreCase("nt2QuotaCuttOff")) {
 
-                System.out.println("Inloop");
                 streams = streamService.findByCutOffNt2Streams(searchForm.getCetMarks() + 1, inputStream);
 
             } else if (qouta.equalsIgnoreCase("nt3QuotaCuttOff")) {
 
-                // System.out.println("Inloop");
                 streams = streamService.findByCutOffNt3Streams(searchForm.getCetMarks() + 1, inputStream);
 
             } else if (qouta.equalsIgnoreCase("tfwsQuotaCuttOff")) {
-                // System.out.println("Inloop");
                 streams = streamService.findByCutOffTfwsStreams(searchForm.getCetMarks() + 1, inputStream);
 
             }
@@ -173,9 +167,6 @@ public class MyController {
 
                 if(qouta.equalsIgnoreCase("openQuotaCuttOff"))
                 {
-                    System.out.println(searchForm);
-                    System.out.println("Open");
-
                     streams= streamService.findByCuttOffGeneralLocation(searchForm.getCetMarks(),searchForm.getStream(), searchForm.getLocation());
                 }
                 else if(qouta.equalsIgnoreCase("scQuotaCuttOff"))
@@ -212,4 +203,40 @@ public class MyController {
         model.addAttribute("searchForm", searchForm);
         return "/searchPage";
     }
+
+    @GetMapping("/feedback")
+    public String feedBack()
+    {
+        return "feedBack";
+    }
+
+
+    
+    @GetMapping("/reg")
+    public String registration(Model model)
+    {
+        Admin admin = new Admin();
+        model.addAttribute("admin", admin);
+        return "AdminReg";
+    }
+
+    @PostMapping("/reg")
+    public String registration(@ModelAttribute AdminForm adminForm,Model model,HttpSession session)
+    {
+
+        Admin admin = new Admin();
+        String id = UUID.randomUUID().toString();
+
+        admin.setUsername(adminForm.getUsername());
+        admin.setPassword(adminForm.getPassword());
+        admin.setId(id);
+        Message message = Message.builder().message("Registration Successful").type(MessageType.green).build();
+        session.setAttribute("message", message);
+
+
+        adminServiceImpl.save(admin);
+        return "redirect:/reg";
+    }
 }
+
+

@@ -40,7 +40,6 @@ public class StreamServiceImpl  implements StreamService{
 
     @Override
     public List<Streams> findByCutOffGenaral(float marks) {
-        System.out.println("In impl"+marks);
         return streamRepo.findByCutOffGenaral(marks);
 
     }

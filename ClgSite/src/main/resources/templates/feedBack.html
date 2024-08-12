@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: parent(~{::#content},~{title},~{script})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" data-th-href="@{'/css/output.css'}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.4.1/flowbite.min.css" rel="stylesheet" />
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>College Selection</title>
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" data-th-href="@{'css/style.css'}">
+    </head>
+    <body>
+        <div id="content" class="" th-data-fragment="content">
+
+            <div class="min-h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-900 transition duration-300" style="margin-top: 100px;">
+                <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
+                    <h2 class="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-white">Give Us Your Feedback</h2>
+            
+                    <form id="feedback-form" class="space-y-6">
+                        <!-- Star Rating -->
+                        <div class="flex items-center space-x-1 justify-center" id="stars">
+                            <svg id="star1" data-value="1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-gray-300 dark:text-gray-500 cursor-pointer transition duration-200">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                            </svg>
+                            <svg id="star2" data-value="2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-gray-300 dark:text-gray-500 cursor-pointer transition duration-200">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                            </svg>
+                            <svg id="star3" data-value="3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-gray-300 dark:text-gray-500 cursor-pointer transition duration-200">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                            </svg>
+                            <svg id="star4" data-value="4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-gray-300 dark:text-gray-500 cursor-pointer transition duration-200">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                            </svg>
+                            <svg id="star5" data-value="5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-gray-300 dark:text-gray-500 cursor-pointer transition duration-200">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                            </svg>
+                        </div>
+            
+                        <!-- Feedback Description -->
+                        <div>
+                            <label for="feedback" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Your Feedback</label>
+                            <textarea id="feedback" name="feedback" rows="4" class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400" placeholder="Tell us what you think..."></textarea>
+                        </div>
+            
+                        <!-- Submit Button -->
+                        <div class="text-center">
+                            <button type="submit" class="w-full bg-indigo-600 dark:bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-700 dark:hover:bg-indigo-600 transition duration-200">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <script>
+                const stars = document.querySelectorAll('#stars svg');
+                let selectedRating = 0;
+            
+                // Add event listeners to each star for hover and click events
+                stars.forEach(star => {
+                    // Fill stars on hover
+                    star.addEventListener('mouseover', function() {
+                        const value = this.getAttribute('data-value');
+                        fillStars(value);
+                    });
+            
+                    // Reset stars on mouse out if not clicked
+                    star.addEventListener('mouseout', function() {
+                        fillStars(selectedRating);
+                    });
+            
+                    // Set the selected rating on click
+                    star.addEventListener('click', function() {
+                        selectedRating = this.getAttribute('data-value');
+                        fillStars(selectedRating);
+                        console.log("User selected rating:", selectedRating);
+                    });
+                });
+            
+                // Function to fill stars
+                function fillStars(rating) {
+                    stars.forEach(star => {
+                        const value = star.getAttribute('data-value');
+                        if (value <= rating) {
+                            star.classList.add('text-yellow-400');
+                            star.classList.remove('text-gray-300', 'dark:text-gray-500');
+                        } else {
+                            star.classList.remove('text-yellow-400');
+                            star.classList.add('text-gray-300', 'dark:text-gray-500');
+                        }
+                    });
+                }
+            
+                // Handle form submission
+                document.getElementById('feedback-form').addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    
+                    const feedback = document.getElementById('feedback').value;
+            
+                    if (!selectedRating) {
+                        alert('Please select a rating before submitting your feedback.');
+                        return;
+                    }
+            
+                    console.log("Rating:", selectedRating);
+                    console.log("Feedback:", feedback);
+            
+                    // Show an alert or send the data to your server
+                    alert(`Thank you for your feedback! You rated us ${selectedRating} star(s).`);
+            
+                    // Example code to send data to the server (replace with actual endpoint)
+                    /*
+                    fetch('your-server-endpoint', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ rating: selectedRating, feedback: feedback }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+                    */
+                });
+            </script>
+            
+          
+            
+            
+
+           
+            
+
+          
+        </div>
+       
+        
+    </div>
+
+    </body>
+    </html>
+    
+
+    
+    
+
+
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.4.1/flowbite.min.js"></script>
+    </div>
+
+</body>
+</html>

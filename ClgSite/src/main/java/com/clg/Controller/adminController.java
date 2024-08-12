@@ -1,39 +1,47 @@
 package com.clg.Controller;
 
-import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.clg.Entities.Admin;
 import com.clg.Entities.Colleges;
 import com.clg.Entities.Streams;
+import com.clg.Forms.AdminForm;
 import com.clg.Forms.CollegeForm;
 import com.clg.Forms.StreamForm;
 import com.clg.Helper.Message;
 import com.clg.Helper.MessageType;
+import com.clg.repo.AdminRepo;
 import com.clg.services.CollegeService;
 import com.clg.services.ImageService;
 import com.clg.services.StreamService;
+import com.clg.services.Impl.AdminServiceImpl;
 
 import jakarta.servlet.http.HttpSession;
-import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/admin")
 public class adminController {
 
     @Autowired
+    private AdminServiceImpl adminServiceImpl;
+
+
+    @Autowired
     private StreamService streamService;
 
      @Autowired
      private ImageService imageService;
+
+     @Autowired
+     private AdminRepo adminRepo;
 
     @Autowired
     private CollegeService collegeService;
@@ -134,4 +142,31 @@ public class adminController {
 
         return "redirect:/admin/addStream";
     }
+
+    @GetMapping("/reg")
+    public String registration(Model model)
+    {
+        Admin admin = new Admin();
+        model.addAttribute("admin", admin);
+        return "AdminReg";
+    }
+
+    @PostMapping("/reg")
+    public String registration(@ModelAttribute AdminForm adminForm,Model model,HttpSession session)
+    {
+
+        Admin admin = new Admin();
+        String id = UUID.randomUUID().toString();
+
+        admin.setUsername(adminForm.getUsername());
+        admin.setPassword(adminForm.getPassword());
+        admin.setId(id);
+        Message message = Message.builder().message("Registration Successful").type(MessageType.green).build();
+        session.setAttribute("message", message);
+
+
+        adminServiceImpl.save(admin);
+        return "redirect:/admin/reg";
+    }
 }
+

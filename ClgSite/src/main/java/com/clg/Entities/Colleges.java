@@ -9,6 +9,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -26,8 +29,11 @@ import lombok.ToString;
 public class Colleges {
     @Id
     private String clgId;
+    @NotBlank
     private String clgName;
+    @NotBlank
     private String clgLocation;
+    @NotBlank
     private String clgContact;
     private String clgEmail;
     private String address;
@@ -37,7 +43,6 @@ public class Colleges {
     private String description;
     private String cloudinaryImagePublicId;
     private String ratings;
-    @Column(length = 1000)
     private int streamsAvail;
     private boolean autonomous=false;
     private String picture;
