@@ -13,7 +13,7 @@
 ## Technologies Used
 
 - **Backend**: Spring Boot, Spring Security
-- **Frontend**: Thymeleaf, TailwindCSS, Angular
+- **Frontend**: Thymeleaf, TailwindCSS
 - **Database**: MySQL
 - **Other Tools**: Java, SQL
 
