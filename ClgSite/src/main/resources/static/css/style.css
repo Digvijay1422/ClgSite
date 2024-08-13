@@ -1,4 +1,29 @@
-#photo{
-    background:linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.6)),url(../Images/clg.jpg);	
 
+
+#photo {
+    background:linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.6)),url(../Images/new.jpg);	
+
+    background-size: cover; /* Ensures the image covers the entire section */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    height: 90vh; /* Adjust the height as needed */
+    width: 100%; /* Full width */
+    display: flex;
+    justify-content: center;
+    transform: scale(0.9);
+    align-items: center;
+    border: 5rem;
+    border-color: black;
+    text-align: center;
+    color: white; /* Text color over the image */
+}
+
+#photo h2 {
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add text shadow for better readability */
+}
+
+#photo p {
+    font-size: 1.25rem;
+    margin-top: 10px;
 }
