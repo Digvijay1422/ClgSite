@@ -22,9 +22,12 @@ public class Config {
 	
 	@Autowired
 	private AuthFailureHandler failureHandler;
-	@Autowired
-	private SecurityCustomUserDeatilService securityCustomUserDeatilService;
 	
+	private SecurityCustomUserDeatilService securityCustomUserDeatilService;
+
+	public Config(SecurityCustomUserDeatilService securityCustomUserDeatilService){
+		this.securityCustomUserDeatilService = securityCustomUserDeatilService;
+	}
 	
 	@Bean
 	public PasswordEncoder passwordEncoder()
@@ -47,7 +50,7 @@ public class Config {
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception
 	{
-		//Configuration
+		// Configuration
 		
 		httpSecurity.authorizeHttpRequests(authorize->{
 			authorize.requestMatchers("/admin/**").authenticated();
@@ -58,10 +61,10 @@ public class Config {
 		httpSecurity.formLogin(formLogin->{
 			formLogin.loginPage("/login")
 			.loginProcessingUrl("/authenticate")
-			.successForwardUrl("/admin/AdminPage")
-			.failureForwardUrl("/login?error=true")
+			.successForwardUrl("/admin/adminPage")
+			.passwordParameter("password")
 			.usernameParameter("username")
-			.passwordParameter("password");
+			.failureForwardUrl("/login?error=true");
 			formLogin.failureHandler(failureHandler);
 
 		});

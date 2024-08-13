@@ -1,6 +1,7 @@
 package com.clg.services.Impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,6 +26,9 @@ public class AdminServiceImpl {
         admin.setRoleList(List.of(AppConstants.ROLE_USER));
         return repo.save(admin);
         
+    }
+    public Optional<Admin> findByUsername(String username){
+        return repo.findByUsername(username);
     }
 }
 

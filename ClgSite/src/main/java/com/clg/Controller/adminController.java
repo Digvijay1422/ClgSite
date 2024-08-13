@@ -46,8 +46,7 @@ public class adminController {
     @Autowired
     private CollegeService collegeService;
 
-
-    @GetMapping(value = "/adminPage")
+    @PostMapping(value = "/adminPage")
     private String adminPage()
     {
         return "Admin/AdminPage";

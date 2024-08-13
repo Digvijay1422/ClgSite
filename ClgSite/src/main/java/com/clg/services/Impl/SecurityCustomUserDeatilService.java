@@ -5,7 +5,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
 import com.clg.repo.AdminRepo;
 
 @Service
@@ -17,7 +16,8 @@ public class SecurityCustomUserDeatilService implements UserDetailsService{
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		UserDetails userDetails=  userRepo.findByUsername(username).orElseThrow(()->new UsernameNotFoundException("Username not found"));
+		System.out.println("Username:"+username);
+		UserDetails userDetails = userRepo.findByUsername(username).orElseThrow(()->new UsernameNotFoundException("Username not found"));
 		return userDetails;
 	}
 

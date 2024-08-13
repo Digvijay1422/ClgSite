@@ -15,12 +15,16 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Getter
+@Setter
 @Entity
 public class Admin implements UserDetails{
     
@@ -51,12 +55,7 @@ public class Admin implements UserDetails{
     public void setId(String id) {
         Id = id;
     }
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
+   
     public List<String> getRoleList() {
         return roleList;
     }
