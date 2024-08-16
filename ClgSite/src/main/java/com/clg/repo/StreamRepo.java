@@ -84,16 +84,16 @@ public interface StreamRepo extends JpaRepository<Streams,String>{
 
      @Query("SELECT s FROM Streams s WHERE s.vjQuotaCuttOff <= :marks AND s.colleges.clgLocation=:location AND s.streamName=:name  ORDER BY s.vjQuotaCuttOff DESC")
     List<Streams> findByCutOffVjLocation(@Param("marks") float marks,@Param("name") String name,@Param("location") String location);
-     @Query("SELECT s FROM Streams s WHERE s.tfwsQuotaCuttOff <= :marks AND s.colleges.clgLocation=:location AND s.streamName=:name  ORDER BY s.tfwsQuotaCuttOff DESC")
+     @Query("SELECT s FROM Streams s WHERE s.nt1QuotaCuttOff <= :marks AND s.colleges.clgLocation=:location AND s.streamName=:name  ORDER BY s.tfwsQuotaCuttOff DESC")
     List<Streams> findByCutOffNt1Location(@Param("marks") float marks,@Param("name") String name,@Param("location") String location);
 
-     @Query("SELECT s FROM Streams s WHERE s.tfwsQuotaCuttOff <= :marks AND s.colleges.clgLocation=:location AND s.streamName=:name  ORDER BY s.tfwsQuotaCuttOff DESC")
+     @Query("SELECT s FROM Streams s WHERE s.nt2QuotaCuttOff <= :marks AND s.colleges.clgLocation=:location AND s.streamName=:name  ORDER BY s.tfwsQuotaCuttOff DESC")
     List<Streams> findByCutOffNt2Location(@Param("marks") float marks,@Param("name") String name,@Param("location") String location);
 
-     @Query("SELECT s FROM Streams s WHERE s.tfwsQuotaCuttOff <= :marks AND s.colleges.clgLocation=:location AND s.streamName=:name  ORDER BY s.tfwsQuotaCuttOff DESC")
+     @Query("SELECT s FROM Streams s WHERE s.nt3QuotaCuttOff <= :marks AND s.colleges.clgLocation=:location AND s.streamName=:name  ORDER BY s.tfwsQuotaCuttOff DESC")
     List<Streams> findByCutOffNt3Location(@Param("marks") float marks,@Param("name") String name,@Param("location") String location);
     
-     @Query("SELECT s FROM Streams s WHERE s.tfwsQuotaCuttOff <= :marks AND s.colleges.clgLocation=:location AND s.streamName=:name  ORDER BY s.tfwsQuotaCuttOff DESC")
+     @Query("SELECT s FROM Streams s WHERE s.obcQuotaCuttOff <= :marks AND s.colleges.clgLocation=:location AND s.streamName=:name  ORDER BY s.tfwsQuotaCuttOff DESC")
     List<Streams> findByCutOffObcLocation(@Param("marks") float marks,@Param("name") String name,@Param("location") String location);
 
 }    

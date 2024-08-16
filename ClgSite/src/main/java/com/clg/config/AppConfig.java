@@ -9,12 +9,12 @@ import com.cloudinary.utils.ObjectUtils;
 @Configuration
 public class AppConfig {
     
-    @Value("${Cloudenary.cloud.name}")
-    private String cloudName;
-    @Value("${Cloudenary.api.key}")
-    private String apiKey;
-    @Value("${Cloudenary.api.secret}")
-    private String apiSecret;
+    // @Value("${Cloudenary.cloud.name}")
+    // private String cloudName;
+    // @Value("${Cloudenary.api.key}")
+    // private String apiKey;
+    // @Value("${Cloudenary.api.secret}")
+    // private String apiSecret;
 
     @Bean
     public Cloudinary cloudinary()

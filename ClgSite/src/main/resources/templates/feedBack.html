@@ -20,117 +20,49 @@
                 <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
                     <h2 class="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-white">Give Us Your Feedback</h2>
             
-                    <form id="feedback-form" class="space-y-6">
-                        <!-- Star Rating -->
-                        <div class="flex items-center space-x-1 justify-center" id="stars">
-                            <svg id="star1" data-value="1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-gray-300 dark:text-gray-500 cursor-pointer transition duration-200">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                            </svg>
-                            <svg id="star2" data-value="2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-gray-300 dark:text-gray-500 cursor-pointer transition duration-200">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                            </svg>
-                            <svg id="star3" data-value="3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-gray-300 dark:text-gray-500 cursor-pointer transition duration-200">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                            </svg>
-                            <svg id="star4" data-value="4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-gray-300 dark:text-gray-500 cursor-pointer transition duration-200">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                            </svg>
-                            <svg id="star5" data-value="5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-8 h-8 text-gray-300 dark:text-gray-500 cursor-pointer transition duration-200">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                            </svg>
-                        </div>
-            
-                        <!-- Feedback Description -->
+                    <form data-th-action="@{'/feedback'}" method="POST">
                         <div>
-                            <label for="feedback" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Your Feedback</label>
-                            <textarea id="feedback" name="feedback" rows="4" class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400" placeholder="Tell us what you think..."></textarea>
+                            <label for="rating" class="block text-lg font-medium dark:text-white text-gray-700">Rating:</label>
+                            <div  id="rating-container" class="flex mb-3 space-x-2 mt-2">
+                                <span  class="star cursor-pointer text-gray-400 text-4xl transition duration-300 ease-in-out" data-value="1">★</span>
+                                <span class="star cursor-pointer text-gray-400 text-4xl transition duration-300 ease-in-out" data-value="2">★</span>
+                                <span class="star cursor-pointer text-gray-400 text-4xl transition duration-300 ease-in-out" data-value="3">★</span>
+                                <span class="star cursor-pointer text-gray-400 text-4xl transition duration-300 ease-in-out" data-value="4">★</span>
+                                <span class="star cursor-pointer text-gray-400 text-4xl transition duration-300 ease-in-out" data-value="5">★</span>
+                            </div>
+                            <input required type="hidden" name="rating" id="rating-value">
                         </div>
-            
-                        <!-- Submit Button -->
-                        <div class="text-center">
-                            <button type="submit" class="w-full bg-indigo-600 dark:bg-indigo-500 text-white py-2 px-4 rounded hover:bg-indigo-700 dark:hover:bg-indigo-600 transition duration-200">Submit</button>
+                        
+                        <!-- Other form fields like feedback text -->
+                           <!-- Feedback Description -->
+                        <div>
+                            <label for="feedback" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Feedback:</label>
+                            <textarea required id="feedback" name="feedback" rows="4" class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:focus:ring-indigo-400 dark:focus:border-indigo-400" placeholder="Tell us what you think..."></textarea>
                         </div>
+                        
+                        <button type="submit" class="px-6 mt-5 text-black py-3 bg-gradient-to-r from-blue-500 to-purple-600 dark:text-white font-semibold rounded-lg shadow-md hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition-transform duration-300 ease-in-out">
+                            Submit Feedback
+                        </button>
                     </form>
+                    
                 </div>
             </div>
             
             <script>
-                const stars = document.querySelectorAll('#stars svg');
-                let selectedRating = 0;
-            
-                // Add event listeners to each star for hover and click events
-                stars.forEach(star => {
-                    // Fill stars on hover
-                    star.addEventListener('mouseover', function() {
-                        const value = this.getAttribute('data-value');
-                        fillStars(value);
-                    });
-            
-                    // Reset stars on mouse out if not clicked
-                    star.addEventListener('mouseout', function() {
-                        fillStars(selectedRating);
-                    });
-            
-                    // Set the selected rating on click
-                    star.addEventListener('click', function() {
-                        selectedRating = this.getAttribute('data-value');
-                        fillStars(selectedRating);
-                        console.log("User selected rating:", selectedRating);
-                    });
-                });
-            
-                // Function to fill stars
-                function fillStars(rating) {
-                    stars.forEach(star => {
-                        const value = star.getAttribute('data-value');
-                        if (value <= rating) {
-                            star.classList.add('text-yellow-400');
-                            star.classList.remove('text-gray-300', 'dark:text-gray-500');
-                        } else {
-                            star.classList.remove('text-yellow-400');
-                            star.classList.add('text-gray-300', 'dark:text-gray-500');
-                        }
-                    });
-                }
-            
-                // Handle form submission
-                document.getElementById('feedback-form').addEventListener('submit', function(event) {
-                    event.preventDefault();
+
+            document.querySelectorAll('.star').forEach(star => {
+                star.addEventListener('click', function() {
+                    const rating = this.getAttribute('data-value');
+                    document.getElementById('rating-value').value = rating;
                     
-                    const feedback = document.getElementById('feedback').value;
-            
-                    if (!selectedRating) {
-                        alert('Please select a rating before submitting your feedback.');
-                        return;
-                    }
-            
-                    console.log("Rating:", selectedRating);
-                    console.log("Feedback:", feedback);
-            
-                    // Show an alert or send the data to your server
-                    alert(`Thank you for your feedback! You rated us ${selectedRating} star(s).`);
-            
-                    // Example code to send data to the server (replace with actual endpoint)
-                    /*
-                    fetch('your-server-endpoint', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({ rating: selectedRating, feedback: feedback }),
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log('Success:', data);
-                    })
-                    .catch((error) => {
-                        console.error('Error:', error);
+                    // Optional: Update the star colors
+                    document.querySelectorAll('.star').forEach(s => {
+                        s.style.color = s.getAttribute('data-value') <= rating ? 'yellow' : 'gray';
                     });
-                    */
                 });
-            </script>
-            
-          
+            });
+
+         </script>
             
             
 

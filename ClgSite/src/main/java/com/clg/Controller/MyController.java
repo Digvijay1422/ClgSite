@@ -11,15 +11,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clg.Entities.Admin;
 import com.clg.Entities.Colleges;
+import com.clg.Entities.Feedback;
 import com.clg.Entities.Streams;
 import com.clg.Forms.AdminForm;
 import com.clg.Forms.CollegeSearchForm;
+import com.clg.Forms.FeedbackForm;
 import com.clg.Helper.Message;
 import com.clg.Helper.MessageType;
 import com.clg.services.CollegeService;
+import com.clg.services.FeedbackService;
 import com.clg.services.StreamService;
 import com.clg.services.Impl.AdminServiceImpl;
 
@@ -36,6 +40,10 @@ public class MyController {
 
     @Autowired
     private StreamService streamService;
+
+    @Autowired
+    private FeedbackService fbService;
+
 
     @GetMapping("/")
     public String home() {
@@ -73,10 +81,27 @@ public class MyController {
     }
 
     @GetMapping("/search")
-    public String searchCollege(@ModelAttribute CollegeSearchForm searchForm, Model model, HttpSession session) {
+    public String searchCollege( Model model, HttpSession session) {
 
         // System.out.println(searchForm);
 
+        CollegeSearchForm searchForm = new CollegeSearchForm();
+        List<Streams> streams = null;
+
+        model.addAttribute("streams", streams);
+        model.addAttribute("searchForm", searchForm);
+
+        return "/searchPage";
+     
+
+    }
+
+
+    @PostMapping("/searchProcess")
+    public String searchProcess(@ModelAttribute CollegeSearchForm searchForm,Model model, HttpSession session)
+    {
+
+        
         if (searchForm.getPcmMarks() < 150) {
             Message message = Message.builder()
                     .message("You are not qualified to get admission, You need minimum 150 marks to in PCM to qualify")
@@ -205,10 +230,22 @@ public class MyController {
     }
 
     @GetMapping("/feedback")
-    public String feedBack()
+    public String feedBack(Model model)
     {
         return "feedBack";
     }
+    @PostMapping("/feedback")
+    public String feedBackProcess(@RequestParam("rating") int rating, 
+                             @RequestParam("feedback") String feedback ,Model model)
+    {
+        Feedback fb = new Feedback();
+        fb.setContent(feedback);
+        fb.setRating(rating);
+        fbService.save(fb);
+        model.addAttribute("feedback", fb);
+        return "feedBack";
+    }
+
 
 
     
