@@ -40,7 +40,7 @@ To get started with the project, follow the instructions below:
     ```
 
 5. **Access the application**:
-    - Open your browser and go to `http://localhost:8080`.
+    - Open your browser and go to `http://localhost:9999`.
 
 ## Contributing
 
