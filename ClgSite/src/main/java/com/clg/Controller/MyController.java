@@ -100,141 +100,153 @@ public class MyController {
     @PostMapping("/searchProcess")
     public String searchProcess(@ModelAttribute CollegeSearchForm searchForm,Model model, HttpSession session)
     {
-
-        
-        if (searchForm.getPcmMarks() < 150) {
-            Message message = Message.builder()
-                    .message("You are not qualified to get admission, You need minimum 150 marks to in PCM to qualify")
-                    .type(MessageType.red).build();
-            session.setAttribute("message", message);
-            return "redirect:/search";
-        }
-
-        String qouta = searchForm.getQouta();
-        model.addAttribute("qouta", qouta);
-
-        String inputStream = searchForm.getStream();
-        List<Streams> streams = null;
-
-        if (searchForm.getStream().equalsIgnoreCase("all") && searchForm.getLocation().equalsIgnoreCase("all")) {
-
-            if (qouta.equalsIgnoreCase("openQuotaCuttOff")) {
-
-                streams = streamService.findByCutOffGenaral(searchForm.getCetMarks() + 1);
-
-            } else if (qouta.equalsIgnoreCase("obcQuotaCuttOff")) {
-
-                streams = streamService.findByCutOffObc(searchForm.getCetMarks() + 1);
-
-            } else if (qouta.equalsIgnoreCase("scQuotaCuttOff")) {
-
-                streams = streamService.findByCutOffSc(searchForm.getCetMarks() + 1);
-
-            } else if (qouta.equalsIgnoreCase("vjQuotaCuttOff")) {
-
-                streams = streamService.findByCutOffVj(searchForm.getCetMarks() + 1);
-
-            } else if (qouta.equalsIgnoreCase("nt1QuotaCuttOff")) {
-
-                streams = streamService.findByCutOffNt1(searchForm.getCetMarks() + 1);
-
-            } else if (qouta.equalsIgnoreCase("nt2QuotaCuttOff")) {
-
-                streams = streamService.findByCutOffNt2(searchForm.getCetMarks() + 1);
-
-            } else if (qouta.equalsIgnoreCase("nt3QuotaCuttOff")) {
-
-                streams = streamService.findByCutOffNt3(searchForm.getCetMarks() + 1);
-
-            } else if (qouta.equalsIgnoreCase("tfwsQuotaCuttOff")) {
-                // System.out.println("Inloop");
-                streams = streamService.findByCutOffTfws(searchForm.getCetMarks() + 1);
-
+        try {
+            // Null safety checks
+            if (searchForm == null) {
+                searchForm = new CollegeSearchForm();
+            }
+            
+            if (searchForm.getPcmMarks() < 150) {
+                Message message = Message.builder()
+                        .message("You are not qualified to get admission, You need minimum 150 marks to in PCM to qualify")
+                        .type(MessageType.red).build();
+                session.setAttribute("message", message);
+                return "redirect:/search";
             }
 
-        } else if (!searchForm.getStream().equalsIgnoreCase("all") && searchForm.getLocation().equalsIgnoreCase("all")) {
-
-            if (qouta.equalsIgnoreCase("openQuotaCuttOff")) {
-
-                streams = streamService.findByCutOffGenaralStreams(searchForm.getCetMarks() + 1, inputStream);
-
-            } else if (qouta.equalsIgnoreCase("obcQuotaCuttOff")) {
-
-                streams = streamService.findByCutOffObcStreams(searchForm.getCetMarks() + 1, inputStream);
-
-            } else if (qouta.equalsIgnoreCase("scQuotaCuttOff")) {
-
-                streams = streamService.findByCutOffScStreams(searchForm.getCetMarks() + 1, inputStream);
-
-            } else if (qouta.equalsIgnoreCase("vjQuotaCuttOff")) {
-
-                streams = streamService.findByCutOffVjStreams(searchForm.getCetMarks() + 1, inputStream);
-
-            } else if (qouta.equalsIgnoreCase("nt1QuotaCuttOff")) {
-
-                streams = streamService.findByCutOffNt1Streams(searchForm.getCetMarks() + 1, inputStream);
-
-            } else if (qouta.equalsIgnoreCase("nt2QuotaCuttOff")) {
-
-                streams = streamService.findByCutOffNt2Streams(searchForm.getCetMarks() + 1, inputStream);
-
-            } else if (qouta.equalsIgnoreCase("nt3QuotaCuttOff")) {
-
-                streams = streamService.findByCutOffNt3Streams(searchForm.getCetMarks() + 1, inputStream);
-
-            } else if (qouta.equalsIgnoreCase("tfwsQuotaCuttOff")) {
-                streams = streamService.findByCutOffTfwsStreams(searchForm.getCetMarks() + 1, inputStream);
-
+            // Safe null checks
+            String stream = searchForm.getStream() != null ? searchForm.getStream().trim() : "all";
+            String location = searchForm.getLocation() != null ? searchForm.getLocation().trim() : "all";
+            String qouta = searchForm.getQouta() != null ? searchForm.getQouta().trim() : "";
+            
+            if (qouta.isEmpty()) {
+                Message message = Message.builder()
+                        .message("Please select a quota.")
+                        .type(MessageType.red).build();
+                session.setAttribute("message", message);
+                return "redirect:/search";
             }
 
-        }
-         else if (!searchForm.getStream().equalsIgnoreCase("all") && !searchForm.getLocation().equalsIgnoreCase("all")) {
+            model.addAttribute("qouta", qouta);
 
-                if(qouta.equalsIgnoreCase("openQuotaCuttOff"))
-                {
-                    streams= streamService.findByCuttOffGeneralLocation(searchForm.getCetMarks(),searchForm.getStream(), searchForm.getLocation());
-                }
-                else if(qouta.equalsIgnoreCase("scQuotaCuttOff"))
-                {
-                    streams = streamService.findByCuttOffScLocation(searchForm.getCetMarks(), inputStream, searchForm.getLocation());
-                }
-                 else if(qouta.equalsIgnoreCase("vjQuotaCuttOff"))
-                {
-                    streams = streamService.findByCuttOffVjLocation(searchForm.getCetMarks(), inputStream, searchForm.getLocation());
-                }
-                else if(qouta.equalsIgnoreCase("nt1QuotaCuttOff"))
-                {
-                    streams = streamService.findByCuttOffNt1Location(searchForm.getCetMarks(), inputStream, searchForm.getLocation());
-                }
-                else if(qouta.equalsIgnoreCase("nt2QuotaCuttOff"))
-                {
-                    streams = streamService.findByCuttOffNt2Location(searchForm.getCetMarks(), inputStream, searchForm.getLocation());
-                }
-                else if(qouta.equalsIgnoreCase("nt3QuotaCuttOff"))
-                {
-                    streams = streamService.findByCuttOffNt2Location(searchForm.getCetMarks(), inputStream, searchForm.getLocation());
-                }
-                else if(qouta.equalsIgnoreCase("obcQuotaCuttOff"))
-                {
-                    streams = streamService.findByCuttOffObcLocation(searchForm.getCetMarks(), inputStream, searchForm.getLocation());
-                }
-                else if(qouta.equalsIgnoreCase("tfwsQuotaCuttOff"))
-                {
-                    streams = streamService.findByCuttOffTfwsLocation(searchForm.getCetMarks(), inputStream, searchForm.getLocation());
-                }
-        }
+            float cetMarks = searchForm.getCetMarks() + 1;
+            List<Streams> streams = new java.util.ArrayList<>();
 
-        if (streams == null || streams.isEmpty()) {
+            // Query logic based on stream and location
+            if (stream.equalsIgnoreCase("all") && location.equalsIgnoreCase("all")) {
+                streams = queryByQuotaOnly(qouta, (int)cetMarks);
+            } 
+            else if (!stream.equalsIgnoreCase("all") && location.equalsIgnoreCase("all")) {
+                streams = queryByQuotaAndStream(qouta, (int)cetMarks, stream);
+            } 
+            else if (!stream.equalsIgnoreCase("all") && !location.equalsIgnoreCase("all")) {
+                streams = queryByQuotaStreamLocation(qouta, searchForm.getCetMarks(), stream, location);
+            }
+            else if (stream.equalsIgnoreCase("all") && !location.equalsIgnoreCase("all")) {
+                // Handle all streams with specific location
+                streams = queryByQuotaStreamLocation(qouta, searchForm.getCetMarks(), "", location);
+            }
+
+            if (streams == null) {
+                streams = new java.util.ArrayList<>();
+            }
+            
+            if (streams.isEmpty()) {
+                Message message = Message.builder()
+                        .message("No colleges found matching your criteria. Please adjust your search filters.")
+                        .type(MessageType.red).build();
+                session.setAttribute("message", message);
+            }
+
+            model.addAttribute("streams", streams);
+            model.addAttribute("searchForm", searchForm);
+            return "/searchPage";
+            
+        } catch (Exception e) {
+            System.err.println("Error in searchProcess: " + e.getMessage());
+            e.printStackTrace();
+            
             Message message = Message.builder()
-                    .message("No colleges found matching your criteria. Please adjust your search filters.")
+                    .message("An error occurred while searching. Please try again.")
                     .type(MessageType.red).build();
             session.setAttribute("message", message);
-            streams = new java.util.ArrayList<>();
+            
+            model.addAttribute("streams", new java.util.ArrayList<>());
+            model.addAttribute("searchForm", searchForm != null ? searchForm : new CollegeSearchForm());
+            return "/searchPage";
         }
-        
-        model.addAttribute("streams", streams);
-        model.addAttribute("searchForm", searchForm);
-        return "/searchPage";
+    }
+
+    // Helper method: Query by quota only (all streams, all locations)
+    private List<Streams> queryByQuotaOnly(String qouta, int marks) {
+        switch(qouta) {
+            case "openQuotaCuttOff":
+                return streamService.findByCutOffGenaral(marks);
+            case "obcQuotaCuttOff":
+                return streamService.findByCutOffObc(marks);
+            case "scQuotaCuttOff":
+                return streamService.findByCutOffSc(marks);
+            case "vjQuotaCuttOff":
+                return streamService.findByCutOffVj(marks);
+            case "nt1QuotaCuttOff":
+                return streamService.findByCutOffNt1(marks);
+            case "nt2QuotaCuttOff":
+                return streamService.findByCutOffNt2(marks);
+            case "nt3QuotaCuttOff":
+                return streamService.findByCutOffNt3(marks);
+            case "tfwsQuotaCuttOff":
+                return streamService.findByCutOffTfws(marks);
+            default:
+                return new java.util.ArrayList<>();
+        }
+    }
+
+    // Helper method: Query by quota and stream
+    private List<Streams> queryByQuotaAndStream(String qouta, int marks, String stream) {
+        switch(qouta) {
+            case "openQuotaCuttOff":
+                return streamService.findByCutOffGenaralStreams(marks, stream);
+            case "obcQuotaCuttOff":
+                return streamService.findByCutOffObcStreams(marks, stream);
+            case "scQuotaCuttOff":
+                return streamService.findByCutOffScStreams(marks, stream);
+            case "vjQuotaCuttOff":
+                return streamService.findByCutOffVjStreams(marks, stream);
+            case "nt1QuotaCuttOff":
+                return streamService.findByCutOffNt1Streams(marks, stream);
+            case "nt2QuotaCuttOff":
+                return streamService.findByCutOffNt2Streams(marks, stream);
+            case "nt3QuotaCuttOff":
+                return streamService.findByCutOffNt3Streams(marks, stream);
+            case "tfwsQuotaCuttOff":
+                return streamService.findByCutOffTfwsStreams(marks, stream);
+            default:
+                return new java.util.ArrayList<>();
+        }
+    }
+
+    // Helper method: Query by quota, stream, and location
+    private List<Streams> queryByQuotaStreamLocation(String qouta, float marks, String stream, String location) {
+        switch(qouta) {
+            case "openQuotaCuttOff":
+                return streamService.findByCuttOffGeneralLocation(marks, stream, location);
+            case "scQuotaCuttOff":
+                return streamService.findByCuttOffScLocation(marks, stream, location);
+            case "vjQuotaCuttOff":
+                return streamService.findByCuttOffVjLocation(marks, stream, location);
+            case "nt1QuotaCuttOff":
+                return streamService.findByCuttOffNt1Location(marks, stream, location);
+            case "nt2QuotaCuttOff":
+                return streamService.findByCuttOffNt2Location(marks, stream, location);
+            case "nt3QuotaCuttOff":
+                return streamService.findByCuttOffNt2Location(marks, stream, location);
+            case "obcQuotaCuttOff":
+                return streamService.findByCuttOffObcLocation(marks, stream, location);
+            case "tfwsQuotaCuttOff":
+                return streamService.findByCuttOffTfwsLocation(marks, stream, location);
+            default:
+                return new java.util.ArrayList<>();
+        }
     }
 
     @GetMapping("/feedback")
