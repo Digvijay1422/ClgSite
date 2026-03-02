@@ -58,7 +58,7 @@ public class adminController {
         // System.out.println("heyy");
         CollegeForm collegeForm = new CollegeForm();
         model.addAttribute("form", collegeForm);
-        return "/Admin/addClg";
+        return "Admin/addClg";
     }
 
     @PostMapping("/addClg")
@@ -110,7 +110,7 @@ public class adminController {
     {
        StreamForm  streamsForm = new StreamForm();
        model.addAttribute("form", streamsForm);
-       return "/admin/addStream";
+       return "Admin/addStream";
     }
    
 
