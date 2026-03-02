@@ -91,7 +91,7 @@ public class MyController {
         model.addAttribute("streams", streams);
         model.addAttribute("searchForm", searchForm);
 
-        return "searchPage";
+        return "SearchPage";
      
 
     }
