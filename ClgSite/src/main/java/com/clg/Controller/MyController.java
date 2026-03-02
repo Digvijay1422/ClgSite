@@ -152,7 +152,7 @@ public class MyController {
 
             }
 
-        } else if (searchForm.getStream() != "all" && searchForm.getLocation().equalsIgnoreCase("all")) {
+        } else if (!searchForm.getStream().equalsIgnoreCase("all") && searchForm.getLocation().equalsIgnoreCase("all")) {
 
             if (qouta.equalsIgnoreCase("openQuotaCuttOff")) {
 
@@ -188,7 +188,7 @@ public class MyController {
             }
 
         }
-         else if (searchForm.getStream() != "all" && searchForm.getLocation() != "all") {
+         else if (!searchForm.getStream().equalsIgnoreCase("all") && !searchForm.getLocation().equalsIgnoreCase("all")) {
 
                 if(qouta.equalsIgnoreCase("openQuotaCuttOff"))
                 {
@@ -216,7 +216,7 @@ public class MyController {
                 }
                 else if(qouta.equalsIgnoreCase("obcQuotaCuttOff"))
                 {
-                    streamService.findByCuttOffObcLocation(searchForm.getCetMarks(), inputStream, searchForm.getLocation());
+                    streams = streamService.findByCuttOffObcLocation(searchForm.getCetMarks(), inputStream, searchForm.getLocation());
                 }
                 else if(qouta.equalsIgnoreCase("tfwsQuotaCuttOff"))
                 {
@@ -224,6 +224,14 @@ public class MyController {
                 }
         }
 
+        if (streams == null || streams.isEmpty()) {
+            Message message = Message.builder()
+                    .message("No colleges found matching your criteria. Please adjust your search filters.")
+                    .type(MessageType.red).build();
+            session.setAttribute("message", message);
+            streams = new java.util.ArrayList<>();
+        }
+        
         model.addAttribute("streams", streams);
         model.addAttribute("searchForm", searchForm);
         return "/searchPage";
