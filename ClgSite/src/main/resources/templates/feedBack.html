@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" data-th-href="@{'/css/output.css'}">
+    <link rel="stylesheet" th:href="@{'/css/output.css'}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.4.1/flowbite.min.css" rel="stylesheet" />
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>College Selection</title>
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-        <link rel="stylesheet" data-th-href="@{'css/style.css'}">
+        <link rel="stylesheet" th:href="@{'css/style.css'}">
     </head>
     <body>
-        <div id="content" class="" th-data-fragment="content">
+        <div id="content" class="" th:fragment="content">
 
             <div class="min-h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-900 transition duration-300" style="margin-top: 100px;">
                 <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-md">
                     <h2 class="text-2xl font-bold mb-6 text-center text-gray-900 dark:text-white">Give Us Your Feedback</h2>
             
-                    <form data-th-action="@{'/feedback'}" method="POST">
+                    <form th:action="@{'/feedback'}" method="POST">
                         <div>
                             <label for="rating" class="block text-lg font-medium dark:text-white text-gray-700">Rating:</label>
                             <div  id="rating-container" class="flex mb-3 space-x-2 mt-2">

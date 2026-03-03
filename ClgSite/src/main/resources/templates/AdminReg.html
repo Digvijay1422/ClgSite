@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" data-th-href="@{'/css/output.css'}" />
+        <link rel="stylesheet" th:href="@{'/css/output.css'}" />
     
-        <link rel="stylesheet" data-th-href="@{'/css/style.css'}" />
+        <link rel="stylesheet" th:href="@{'/css/style.css'}" />
     <title>Login</title>
 </head>
 <body>
@@ -20,7 +20,7 @@
             class="block max-w-md p-6 border-t-8 bg-white  border-blue-700 rounded-lg shadow  dark:bg-gray-800 dark:border-blue-700 "
           >
 
-          <div data-th-replace="~{message::messagebox}"></div>
+          <div th:replace="~{Message :: messagebox}"></div>
           
           
           <h5
@@ -28,12 +28,12 @@
           >
           Register
         </h5>
-        <!-- <div class="text-red-500 text-center" data-th-if="${param.error}">Invalid Username Password</div> -->
+        <!-- <div class="text-red-500 text-center" th:if="${param.error}">Invalid Username Password</div> -->
             
-            <form data-th-action="@{'/reg'}"
+            <form th:action="@{'/reg'}"
               method="post" 
               class="max-w-sm mx-auto mt-5"
-              data-th-object="${admin}"
+              th:object="${admin}"
              
               >
 
@@ -48,7 +48,7 @@
                   name="Username"
                   type="text"
                   id="Username"
-                  data-th-field="*{username}"
+                  th:field="*{username}"
 
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Enter Your Username..."
@@ -68,7 +68,7 @@
                 name="password"
                   type="password"
                   id="password"
-                  data-th-field="*{password}"
+                  th:field="*{password}"
                   
 
                   class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

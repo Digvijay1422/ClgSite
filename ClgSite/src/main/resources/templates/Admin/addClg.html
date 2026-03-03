@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" data-th-href="@{'/css/output.css'}">
+    <link rel="stylesheet" th:href="@{'/css/output.css'}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.4.1/flowbite.min.css" rel="stylesheet" />
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>College Selection</title>
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-        <link rel="stylesheet" data-th-href="@{'css/style.css'}">
+        <link rel="stylesheet" th:href="@{'css/style.css'}">
     </head>
     <body>
-        <div id="AdminContent" th-data-fragment="AdminContent">
+        <div id="AdminContent" th:fragment="AdminContent">
 
 
             <div  class="grid grid-cols-12">
@@ -25,7 +25,7 @@
                     
                     class="block  p-6 bg-white border border-gray-200 rounded-lg shadow  dark:bg-gray-800 dark:border-gray-700 "
                     >
-                    <div data-th-replace="~{message::messagebox}"></div>
+                    <div th:replace="~{Message :: messagebox}"></div>
                     
                       <h5
                         class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
@@ -34,10 +34,10 @@
                       </h5>
                       
                       <form  class="mt-5" 
-                        data-th-action="@{'/admin/addClg'}"       
+                        th:action="@{'/admin/addClg'}"
                         method="post"
                         novalidate
-                        data-th-object="${form}"
+                        th:object="${form}"
                         enctype="multipart/form-data"
                         >
                        
@@ -56,14 +56,14 @@
                           <input
                               type="text"
                               name="name"
-                              data-th-field="*{clgName}"
+                              th:field="*{clgName}"
                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                               placeholder="Enter the name..."
                               required
                             />
                             <p class="text-red-600 px-1 py-2"
-                            data-th-if="${#fields.hasErrors('clgName')}"
-                            data-th-errors="*{clgName}"
+                            th:if="${#fields.hasErrors('clgName')}"
+                            th:errors="*{clgName}"
                           ></p>
                           </div>
                         </div>
@@ -83,8 +83,7 @@
                             <input
                               type="text"
                               id="clgLocation"
-                              data-th-field="*{clgLocation}"
-
+                              th:field="*{clgLocation}"
                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             
                               required
@@ -107,8 +106,7 @@
                             <input
                             type="text"
                               id="clgContact"
-                              data-th-field="*{clgContact}"
-
+                              th:field="*{clgContact}"
                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                               placeholder=""
                               required
@@ -127,8 +125,7 @@
                             <input
                               type="text"
                               id="quota"
-                              data-th-field="*{fees}"
-
+                              th:field="*{fees}"
                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             
                               required
@@ -147,8 +144,7 @@
                             <input
                               type="text"
                               id="quota"
-                              data-th-field="*{medianSalary}"
-
+                              th:field="*{medianSalary}"
                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             
                               required
@@ -170,8 +166,7 @@
                             <input
                               type="text"
                               id="quota"
-                              data-th-field="*{link}"
-
+                              th:field="*{link}"
                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             
                               required
@@ -197,8 +192,7 @@
                               <input
                                 type="email"
                                 id="clgEmail"
-                                data-th-field="*{clgEmail}"
-
+                                th:field="*{clgEmail}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder="name@gmail.com"
                                 required
@@ -221,8 +215,7 @@
                               <input
                                 type="number"
                                 id="ratings"
-                                data-th-field="*{ratings}"
-
+                                th:field="*{ratings}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder=""
                                 required
@@ -244,8 +237,7 @@
                               <input
                                 type="number"
                                 id="ratings"
-                                data-th-field="*{streamsAvail}"
-
+                                th:field="*{streamsAvail}"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 placeholder=""
                                 required
@@ -256,7 +248,7 @@
                         <div>
                           
                           <label  for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
-                          <textarea  id="address"                               data-th-field="*{address}"
+                          <textarea  id="address"  th:field="*{address}"
 
                           required rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Address.."></textarea>
                           
@@ -265,7 +257,7 @@
                         <div>
                           
                           <label for="description" class="block mt-6 mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-                          <textarea                               data-th-field="*{description}"
+                          <textarea  th:field="*{description}"
 
                           required id="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write about you"></textarea>
       
@@ -278,7 +270,7 @@
                         <div>
                           
                           <label class="block mb-2 mt-3 text-sm font-medium text-gray-900 dark:text-white" for="picture">Upload Photo</label>
-                          <input                               data-th-field="*{picture}"
+                          <input  th:field="*{picture}"
                           class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="img_file_input" type="file">
                           <p class="mt-1  mb-6 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
       
@@ -289,7 +281,7 @@
                        
                         <div class="flex items-center mt-4 mb-4">
                           <input
-                          data-th-field="*{autonomous}" id="fsv" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                          th:field="*{autonomous}" id="fsv" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                           <label for="fsv" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Autonomous</label>
                       </div>
                         
@@ -324,3 +316,4 @@
 
 </body>
 </html>
+

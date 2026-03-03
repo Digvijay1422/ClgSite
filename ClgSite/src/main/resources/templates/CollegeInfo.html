@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" data-th-href="@{'/css/output.css'}">
+    <link rel="stylesheet" th:href="@{'/css/output.css'}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.4.1/flowbite.min.css" rel="stylesheet" />
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>College Selection</title>
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-        <link rel="stylesheet" data-th-href="@{'css/style.css'}">
+        <link rel="stylesheet" th:href="@{'css/style.css'}">
     </head>
     <body>
-        <div id="content" th-data-fragment="content" data-th-object="${college}">
+        <div id="content" th:fragment="content" th:object="${college}">
 
            
             <div class="bg-gray-100 dark:bg-gray-900">
@@ -22,56 +22,56 @@
                 <div class="flex flex-col md:flex-row container  p-1">
                     <!-- College Image -->
                     <div class="">
-                        <img data-th-src="*{picture}" src="https://via.placeholder.com/600x400" alt="College Image" class="w-full  object-cover transition-transform duration-500 transform hover:scale-105" style="height: 500px; transform: scale(0.8);">
+                        <img th:src="*{picture}" src="https://via.placeholder.com/600x400" alt="College Image" class="w-full  object-cover transition-transform duration-500 transform hover:scale-105" style="height: 500px; transform: scale(0.8);">>
                     </div>
             
                     <!-- College Info -->
                     <div class="md:w-1/2  md:pl-6 mt-8 pt-10 md:mt-0">
                       <div class="shadow-md p-1">
-                        <h2 data-th-text="*{clgName}" class="text-3xl  font-semibold text-red-500 dark:text-gray-200">College Name</h2>
+                        <h2 th:text="*{clgName}" class="text-3xl  font-semibold text-red-500 dark:text-gray-200">College Name</h2>
                         <div class="flex flex-row">
                             <i class="fa-solid fa-location-dot mt-3"></i>
-                            <p data-th-text="*{clgLocation}" class="mt-2 ml-2 text-gray-600 dark:text-gray-400">123 College Street, City, State, ZIP</p>
+                            <p th:text="*{clgLocation}" class="mt-2 ml-2 text-gray-600 dark:text-gray-400">123 College Street, City, State, ZIP</p>
                         </div>
 
                       </div>
-                        <p data-th-text="*{description}" class="mt-4 text-justify text-gray-600 dark:text-gray-400" >
+                        <p th:text="*{description}" class="mt-4 text-justify text-gray-600 dark:text-gray-400" >
                             This college offers a variety of programs and courses to enhance your learning experience.
                         </p>
                         <div class="">
 
                           <div class="mt-4">
                             <span class="font-bold">Ratings : </span>
-                            <span data-th-text="*{ratings}" class="dark:text-yellow-300 text-red-600 "></span>
+                            <span th:text="*{ratings}" class="dark:text-yellow-300 text-red-600 "></span>
                             <i class="fa-regular fa-star"></i>
 
                         </div>
                         <div class="flex flex-row gap-2">
                             <span class="font-bold">Address :  </span>
-                            <span data-th-text="*{address}"></span>
+                            <span th:text="*{address}"></span>
                           </div>
                         <div class="flex flex-row">
                             <div>
                                 <span class="font-bold">Fees : </span>
-                                <span data-th-text="*{fees}"> </span>
+                                <span th:text="*{fees}"> </span>
                             </div>
 
                             <div class="absolute right-60">
-                                <a data-th-href="*{link}" target="_blank" class="  py-2.5 px-5 p-5 me-2 mb-2 text-lg font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-blue-600 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-blue-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-white dark:border-blue-600 dark:hover:text-white dark:hover:bg-gray-700">Apply Now</a>
+                                <a th:href="*{link}" target="_blank" class="  py-2.5 px-5 p-5 me-2 mb-2 text-lg font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-blue-600 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-blue-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-white dark:border-blue-600 dark:hover:text-white dark:hover:bg-gray-700">Apply Now</a>
                             </div>
                           </div>
                         <div>
                             <label  class="font-bold" for="Address">Autonomous : </label>
-                                    <span data-th-if="*{autonomous}">
+                                    <span th:if="*{autonomous}">
                                         <i class="fa-solid fa-check"></i>
                                       </span>
-                                    <span data-th-unless="*{autonomous}">
+                                    <span th:unless="*{autonomous}">
                                         <i class="fa-solid fa-xmark"></i>                               
                                     </span>
                         </div>
                         <div>
                           <span class="font-bold">Median salary : </span>
-                          <span data-th-text="*{medianSalary}"> </span>
+                          <span th:text="*{medianSalary}"> </span>
                         </div>
                         
                       </div>
@@ -107,16 +107,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr data-th-object="${c}" data-th-each="c:${streams}" class="border-b border-gray-300 dark:border-gray-600">
-                                <td data-th-text="*{streamName}" class="py-2 px-4 border-r border-gray-300 dark:border-gray-500 text-gray-700 dark:text-gray-300">Data 1</td>
-                                <td data-th-text="*{openQuotaCuttOff}" class="py-2 px-4 border-r border-gray-300 dark:border-gray-500 text-gray-700 dark:text-gray-300">Data 2</td>
-                                <td data-th-text="*{scQuotaCuttOff}" class="py-2 px-4 border-r border-gray-300 dark:border-gray-500 text-gray-700 dark:text-gray-300">Data 3</td>
-                                <td data-th-text="*{vjQuotaCuttOff}" class="py-2 px-4 border-r border-gray-300 dark:border-gray-500 text-gray-700 dark:text-gray-300">Data 4</td>
-                                <td data-th-text="*{nt1QuotaCuttOff}" class="py-2 px-4 border-r border-gray-300 dark:border-gray-500 text-gray-700 dark:text-gray-300">Data 5</td>
-                                <td data-th-text="*{nt2QuotaCuttOff}" class="py-2 px-4 border-r border-gray-300 dark:border-gray-500 text-gray-700 dark:text-gray-300">Data 6</td>
-                                <td data-th-text="*{nt3QuotaCuttOff}" class="py-2 px-4 border-r border-gray-300 dark:border-gray-500 text-gray-700 dark:text-gray-300">Data 7</td>
-                                <td data-th-text="*{obcQuotaCuttOff}" class="py-2 px-4 border-r border-gray-300 dark:border-gray-500 text-gray-700 dark:text-gray-300">Data 8</td>
-                                <td data-th-text="*{tfwsQuotaCuttOff}" class="py-2 px-4 border-r border-gray-300 dark:border-gray-500 text-gray-700 dark:text-gray-300">Data 8</td>
+                            <tr th:object="${c}" th:each="c:${streams}" class="border-b border-gray-300 dark:border-gray-600">
+                                <td th:text="*{streamName}" class="py-2 px-4 border-r border-gray-300 dark:border-gray-500 text-gray-700 dark:text-gray-300">Data 1</td>
+                                <td th:text="*{openQuotaCuttOff}" class="py-2 px-4 border-r border-gray-300 dark:border-gray-500 text-gray-700 dark:text-gray-300">Data 2</td>
+                                <td th:text="*{scQuotaCuttOff}" class="py-2 px-4 border-r border-gray-300 dark:border-gray-500 text-gray-700 dark:text-gray-300">Data 3</td>
+                                <td th:text="*{vjQuotaCuttOff}" class="py-2 px-4 border-r border-gray-300 dark:border-gray-500 text-gray-700 dark:text-gray-300">Data 4</td>
+                                <td th:text="*{nt1QuotaCuttOff}" class="py-2 px-4 border-r border-gray-300 dark:border-gray-500 text-gray-700 dark:text-gray-300">Data 5</td>
+                                <td th:text="*{nt2QuotaCuttOff}" class="py-2 px-4 border-r border-gray-300 dark:border-gray-500 text-gray-700 dark:text-gray-300">Data 6</td>
+                                <td th:text="*{nt3QuotaCuttOff}" class="py-2 px-4 border-r border-gray-300 dark:border-gray-500 text-gray-700 dark:text-gray-300">Data 7</td>
+                                <td th:text="*{obcQuotaCuttOff}" class="py-2 px-4 border-r border-gray-300 dark:border-gray-500 text-gray-700 dark:text-gray-300">Data 8</td>
+                                <td th:text="*{tfwsQuotaCuttOff}" class="py-2 px-4 border-r border-gray-300 dark:border-gray-500 text-gray-700 dark:text-gray-300">Data 8</td>
                             </tr>
                            
                            
@@ -138,10 +138,10 @@
                             <div class="flex flex-col sm:flex-row">
                               <label class="font-bold">Contact Us : </label>
                             <span class="mr-4 mb-2 sm:mb-0">
-                              📞 <a data-th-text="*{clgContact}"  class="hover:text-blue-500">+123 456 7890</a>
+                              📞 <a th:text="*{clgContact}"  class="hover:text-blue-500">+123 456 7890</a>
                             </span>
                             <span>
-                              📧 <a data-th-text="*{clgEmail}"  class="hover:text-blue-500">example@example.com</a>
+                              📧 <a th:text="*{clgEmail}"  class="hover:text-blue-500">example@example.com</a>
                             </span>
                           </div>
                         </div>
@@ -160,7 +160,7 @@
                       <div class="mt-6 text-center">
                         <p>
                           Visit college's official site :  
-                          <a data-th-href="*{link}" href="https://www.examplecollege.edu" target="_blank" class="text-blue-500 hover:underline">
+                          <a th:href="*{link}" href="https://www.examplecollege.edu" target="_blank" class="text-blue-500 hover:underline">
                             Click Here
                           </a>
                         </p>

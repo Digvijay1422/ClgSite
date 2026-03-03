@@ -8,8 +8,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" data-th-href="@{'/css/output.css'}" />
-            <link rel="stylesheet" data-th-href="@{'/css/style.css'}" />
+    <link rel="stylesheet" th:href="@{'/css/output.css'}" />
+            <link rel="stylesheet" th:href="@{'/css/style.css'}" />
     
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
@@ -28,21 +28,23 @@
 
   
     
-      <div data-th-replace="~{Admin/adminNavbar::navbar}"></div>
+      <div th:replace="~{Admin/adminNavbar::navbar}"></div>
     
 
 
     
-    <div data-th-replace="${AdminContent}"></div>
+    <div th:replace="${AdminContent}"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.4.1/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    
 
-    <script data-th-src="@{'/js/script.js'}"></script>
-    <!-- <th:block data-th-replace="${script}"></th:block> -->
+    <script th:src="@{'/js/script.js'}"></script>
+    <!-- <th:block th:replace="${script}"></th:block> -->
     <!-- sidebar conditions -->
     
     
 
   </body>
 </html>
+
+

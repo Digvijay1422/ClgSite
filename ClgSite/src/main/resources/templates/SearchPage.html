@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" data-th-href="@{'/css/output.css'}">
+    <link rel="stylesheet" th:href="@{'/css/output.css'}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.4.1/flowbite.min.css" rel="stylesheet" />
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>College Selection</title>
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-        <link rel="stylesheet" data-th-href="@{'css/style.css'}">
+        <link rel="stylesheet" th:href="@{'css/style.css'}">
     </head>
     <body>
-        <div id="content" th-data-fragment="content">
+        <div id="content" th:fragment="content">
             <header class="bg-blue-600 dark:bg-blue-800">
                 <div class="container mx-auto py-4">
                     <h1 class="text-white text-3xl font-bold text-center">FindMyCollege</h1>
@@ -26,21 +26,21 @@
                 <section class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-8">
                     <div th:replace="~{Message :: messagebox}"></div>
                     <h2 class="text-xl font-semibold mb-6 text-center text-gray-900 dark:text-gray-100">Find Your Ideal College</h2>
-                    <form data-th-action="@{'/searchProcess'}" method="post" data-th-object="${searchForm}" id="college-search" class="space-y-4">
+                    <form th:action="@{'/searchProcess'}" method="post" th:object="${searchForm}" id="college-search" class="space-y-4">
                         <div class="flex flex-col md:flex-row md:space-x-4">
                             <div class="flex-1">
                                 <label for="mht-cet" class="block text-sm font-medium text-gray-700 dark:text-gray-300">MHT-CET Marks:</label>
-                                <input step="0.01" data-th-field="*{cetMarks}" required type="number" id="mht-cet" name="mht-cet" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100">
+                                <input step="0.01" th:field="*{cetMarks}" required type="number" id="mht-cet" name="mht-cet" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100">
                             </div>
                             <div class="flex-1 mt-4 md:mt-0">
                                 <label for="state-board" class="block text-sm font-medium text-gray-700 dark:text-gray-300">PCM Marks:</label>
-                                <input  value="151" data-th-field="*{pcmMarks}" type="number" id="state-board" name="state-board" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100">
+                                <input  value="151" th:field="*{pcmMarks}" type="number" id="state-board" name="state-board" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100">
                             </div>
                         </div>
                         <div class="flex flex-col md:flex-row md:space-x-4">
                             <div class="flex-1">
                                 <label for="quota" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Quota:</label>
-                                <select data-th-field="*{qouta}"  required class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100">
+                                <select th:field="*{qouta}"  required class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100">
                                     <option value="">Select Quota</option>
                                     <option value="openQuotaCuttOff">General</option>
                                     <option value="obcQuotaCuttOff">OBC</option>
@@ -54,7 +54,7 @@
                             </div>
                             <div class="flex-1 mt-4 md:mt-0">
                                 <label for="streams" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Streams:</label>
-                                <select data-th-field="*{stream}" id="streams" name="streams" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100">
+                                <select th:field="*{stream}" id="streams" name="streams" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100">
                                     <option value="">Select Stream</option>
                                     <option value="all">All</option>
                                     <option value="Artificial Intelligence and Data Science">Artificial Intelligence and Data Science</option>
@@ -85,7 +85,7 @@
                         <div class="flex flex-col md:flex-row md:space-x-4">
                             <div class="flex-1">
                                 <label for="autonomous" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Autonomous:</label>
-                                <select id="autonomous" data-th-field="*{autonomous}" name="autonomous" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100">
+                                <select id="autonomous" th:field="*{autonomous}" name="autonomous" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100">
                                     <option value="">Select Option</option>
                                     <option value="yes">Yes</option>
                                     <option value="no">No</option>
@@ -94,7 +94,7 @@
                             </div>
                             <div class="flex-1 mt-4 md:mt-0">
                                 <label for="location" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Location:</label>
-                                <input data-th-field="*{location}" type="text" id="location" name="location" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100" placeholder="Enter Location">
+                                <input th:field="*{location}" type="text" id="location" name="location" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-700 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100" placeholder="Enter Location">
                             </div>
                         </div>
                         <div class="text-center gap-3 flex flex-row items-center justify-center mt-6">
@@ -126,26 +126,26 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white shadow-lg dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
-                        <tr data-th-object="${c}" data-th-each="c:${streams}" class="border-b border-gray-300 dark:border-gray-600">
-                            <td data-th-text="*{streamName}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 1</td>
-                            <td data-th-if="${qouta == 'openQuotaCuttOff'}" data-th-text="*{openQuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 2</td>
-                            <td data-th-if="${qouta == 'scQuotaCuttOff'}" data-th-text="*{scQuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 3</td>
-                            <td data-th-if="${qouta == 'vjQuotaCuttOff'}" data-th-text="*{vjQuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 4</td>
-                            <td data-th-if="${qouta == 'nt1QuotaCuttOff'}" data-th-text="*{nt1QuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 5</td>
-                            <td data-th-if="${qouta == 'nt2QuotaCuttOff'}" data-th-text="*{nt2QuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 6</td>
-                            <td data-th-if="${qouta == 'nt3QuotaCuttOff'}" data-th-text="*{nt3QuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 7</td>
-                            <td data-th-if="${qouta == 'obcQuotaCuttOff'}" data-th-text="*{obcQuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 8</td>
-                            <td data-th-if="${qouta == 'tfwsQuotaCuttOff'}" data-th-text="*{tfwsQuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 8</td>
-                            <td  class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">   <a data-th-text="*{colleges.clgName}" class="hover:text-red-600 dark:hover:text-blue-800"  data-th-href="@{'/CollegeInfo/'+*{colleges.clgId}}"></a>           </td>
-                            <td data-th-text="*{colleges.clgLocation}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 8</td>
+                        <tr th:object="${c}" th:each="c:${streams}" class="border-b border-gray-300 dark:border-gray-600">
+                            <td th:text="*{streamName}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 1</td>
+                            <td th:if="${qouta == 'openQuotaCuttOff'}" th:text="*{openQuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 2</td>
+                            <td th:if="${qouta == 'scQuotaCuttOff'}" th:text="*{scQuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 3</td>
+                            <td th:if="${qouta == 'vjQuotaCuttOff'}" th:text="*{vjQuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 4</td>
+                            <td th:if="${qouta == 'nt1QuotaCuttOff'}" th:text="*{nt1QuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 5</td>
+                            <td th:if="${qouta == 'nt2QuotaCuttOff'}" th:text="*{nt2QuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 6</td>
+                            <td th:if="${qouta == 'nt3QuotaCuttOff'}" th:text="*{nt3QuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 7</td>
+                            <td th:if="${qouta == 'obcQuotaCuttOff'}" th:text="*{obcQuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 8</td>
+                            <td th:if="${qouta == 'tfwsQuotaCuttOff'}" th:text="*{tfwsQuotaCuttOff}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 8</td>
+                            <td  class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">   <a th:text="*{colleges.clgName}" class="hover:text-red-600 dark:hover:text-blue-800"  th:href="@{'/CollegeInfo/'+*{colleges.clgId}}"></a>           </td>
+                            <td th:text="*{colleges.clgLocation}" class="border-r border-gray-300 dark:border-gray-500 py-2 px-4 text-gray-700 dark:text-gray-300">Data 8</td>
                         </tr>      
                     </tbody>
                 </table>
             </div>
-            <div data-th-if="${streams}">
+            <div th:if="${streams}">
 
                 <h1 
-                data-th-if="${streams.empty}"
+                th:if="${streams.empty}"
                 class="text-5xl text-red-500 p-5 text-center dark:text-red-500">No Result Found!!</h1>
             </div>
       </div>
