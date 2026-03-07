@@ -160,7 +160,7 @@ public class MyController {
 
             model.addAttribute("streams", streams);
             model.addAttribute("searchForm", searchForm);
-            return "searchPage";
+            return "SearchPage";
             
         } catch (Exception e) {
             System.err.println("Error in searchProcess: " + e.getMessage());
@@ -173,7 +173,7 @@ public class MyController {
             
             model.addAttribute("streams", new java.util.ArrayList<>());
             model.addAttribute("searchForm", searchForm != null ? searchForm : new CollegeSearchForm());
-            return "searchPage";
+            return "SearchPage";
         }
     }
 
